@@ -1,0 +1,31 @@
+.wrapper {
+  list-style-type: none;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+  color: #3f6ad8;
+
+  p {
+    margin: 0;
+  }
+  div {
+    display: flex;
+    svg {
+      margin-right: 0.5rem;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  &:hover {
+    background-color: #e0f3ff;
+    transition: 0.8s;
+  }
+
+  .active {
+    font-weight: 600;
+    color: #3f6ad8;
+  }
+}

@@ -1,0 +1,33 @@
+.wrapperClassName {
+  width: 100%;
+
+  .table {
+    width: 100%;
+    border: 1px solid #e9ecef;
+    border-spacing: 0;
+    tr {
+      border-color: inherit;
+    }
+    td {
+      border: 1px solid #e9ecef;
+      border-bottom: none;
+      border-right: none;
+      padding: 0.5rem;
+    }
+    th {
+      border: 1px solid #e9ecef;
+      border-bottom: none;
+      border-right: none;
+      padding: 0.5rem;
+    }
+
+    .recipt {
+      &:hover {
+        background-color: #e0f3ff;
+      }
+    }
+  }
+}
+.wrapper {
+  padding: 1rem;
+}

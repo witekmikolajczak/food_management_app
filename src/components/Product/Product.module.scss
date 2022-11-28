@@ -1,0 +1,27 @@
+.contentClassName {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  justify-content: space-between;
+
+  & > p {
+    margin-right: 2rem;
+  }
+}
+.wrapperClassName {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+
+  &:hover {
+    // background-color: #e0f3ff;
+    opacity: 0.6;
+  }
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
