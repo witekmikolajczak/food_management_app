@@ -6,7 +6,8 @@
     "start": "npx http-server ./dist",
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
     "react": "^18.2.0",
