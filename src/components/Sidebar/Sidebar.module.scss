@@ -1,0 +1,52 @@
+.wrapper {
+  width: auto !important;
+  padding: 0 1.5rem 1.5rem;
+  height: 100%;
+  background-color: #ffffff;
+  position: static;
+  min-width: 300px;
+  display: block;
+  transition: 0.8s;
+
+  .content {
+    position: fixed;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.hidden {
+  right: -600px;
+  transition: 1s;
+  padding: 0 1.5rem 1.5rem;
+  height: 100%;
+  background-color: #ffffff;
+  position: static;
+  width: 100px;
+  .content {
+    position: fixed;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  li {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.copy-right {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  margin-top: 20rem;
+  justify-content: space-around;
+  color: rgb(169, 168, 168);
+}
