@@ -1,0 +1,34 @@
+.wrapper {
+  display: flex;
+  background-color: #eee;
+
+  .add {
+    padding: 3rem;
+    .wrapperClassName {
+      width: 400px;
+    }
+
+    .card-content {
+      padding: 1rem;
+      .product-name {
+      }
+      .product-type {
+        margin-top: 2rem;
+      }
+      .product-unit,
+      .product-count {
+        margin-top: 2rem;
+      }
+
+      .button-container {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: end;
+
+        button {
+          width: 90px;
+        }
+      }
+    }
+  }
+}
