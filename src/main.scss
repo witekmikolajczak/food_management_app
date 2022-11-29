@@ -19,3 +19,22 @@ p {
   margin: 0;
   padding: 0;
 }
+@keyframes fadeRight {
+  from {
+    transform: translate3d(-500px, 0, 0);
+    transition: 0.25s all ease-in-out;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transition: 0.25s all ease-in-out;
+  }
+  to {
+    opacity: 1;
+  }
+}

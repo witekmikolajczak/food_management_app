@@ -6,13 +6,23 @@ import styles from './Table.module.scss';
 interface TableProps {
   icon: JSX.Element;
   reciptCollection: RecentlyViewedRecipt[];
+  fnHandleClick: (recipt: RecentlyViewedRecipt) => void;
+  text: string;
 }
 
-export const Table = ({ icon, reciptCollection }: TableProps) => {
+export const Table = ({
+  icon,
+  reciptCollection,
+  fnHandleClick,
+  text,
+}: TableProps) => {
   const renderReciptCollection = reciptCollection.map(
     (recipt, index) => {
       return (
-        <tr className={styles.recipt}>
+        <tr
+          onClick={() => fnHandleClick(recipt)}
+          className={styles.recipt}
+        >
           <td>{index}.</td>
           <td>{recipt.name}</td>
           <td>{recipt.viewed}</td>
@@ -25,7 +35,7 @@ export const Table = ({ icon, reciptCollection }: TableProps) => {
     <Card
       wrapperClassName={styles.wrapperClassName}
       icon={icon}
-      text="Ostatnio przeglądane przepisy"
+      text={text}
     >
       <div className={styles.wrapper}>
         <table className={styles.table}>

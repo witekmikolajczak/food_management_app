@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { VscMenu } from 'react-icons/vsc';
-import { AiFillCopyrightCircle } from 'react-icons/ai';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 import { CustomNavLink } from '../Navlink/CustomNavLink';
 import styles from './Sidebar.module.scss';
@@ -11,30 +10,38 @@ interface SidebarInterface {
 export const Sidebar = ({
   linksCollection,
 }: SidebarInterface): JSX.Element => {
-  const [show, setShow] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(true);
 
   return (
-    <div className={show ? styles.wrapper : styles.hidden}>
-      <div className={styles.content}>
-        <div className={styles.header}>
-          <h3>{show ? 'Food manager' : 'F'}</h3>
-          <VscMenu
+    <div
+      className={`${styles.wrapper} ${
+        isOpen ? styles.open : styles.close
+      }`}
+    >
+      <div className={styles['toggle-icon']}>
+        {isOpen ? (
+          <FaAngleRight
             size={25}
             onClick={() => {
-              setShow(!show);
+              setIsOpen(!isOpen);
             }}
           />
-        </div>
+        ) : (
+          <FaAngleLeft
+            size={25}
+            onClick={() => {
+              setIsOpen(!isOpen);
+            }}
+          />
+        )}
+      </div>
+
+      <div className={styles.content}>
         <CustomNavLink
-          isHidden={!show}
+          isHidden={!isOpen}
           linksCollection={linksCollection}
         />
       </div>
-
-      {/* <div className={styles['copy-right']}>
-        <AiFillCopyrightCircle />
-        <p>witekmikolajczak all rights reserved</p>
-      </div> */}
     </div>
   );
 };

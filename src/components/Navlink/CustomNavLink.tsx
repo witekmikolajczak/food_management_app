@@ -21,9 +21,14 @@ export const CustomNavLink = ({
             isActive ? styles.active : undefined
           }
         >
-          <div>
-            {link.icon}
-            {!isHidden ? link.name && <p>{link.name}</p> : ''}
+          <div className={`${isHidden && styles.content}`}>
+            <div className={styles['icon-container']}>
+              {link.icon}
+            </div>
+
+            <div className={styles['text-container']}>
+              {!isHidden ? link.name && <p>{link.name}</p> : ''}
+            </div>
           </div>
         </NavLink>
       </li>
