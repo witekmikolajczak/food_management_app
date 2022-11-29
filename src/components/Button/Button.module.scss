@@ -1,14 +1,22 @@
 .primary {
-  border: 1px solid lightgreen;
-  border-radius: 1px;
-  padding: 1rem 2rem 1rem;
-  background-color: inherit;
-  color: lightsalmon;
+  border-radius: 5px;
+  outline: none !important;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s,
+    box-shadow 0.15s;
+  color: #fff;
+  background-color: #3f6ad8;
+  border-color: #3f6ad8;
 }
 .secondary {
-  border: 1px solid lightsalmon;
   border-radius: 1px;
-  padding: 1rem 2rem 1rem;
-  background-color: inherit;
-  color: lightgreen;
+  outline: none !important;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s,
+    box-shadow 0.15s;
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
 }
