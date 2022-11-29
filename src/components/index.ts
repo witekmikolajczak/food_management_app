@@ -10,6 +10,8 @@ import { Recipt } from './Recipt/Recipt';
 import { SelectBox } from './Pagination/SelectBox/SelectBox';
 import { Table } from './Pagination/Table/Table';
 import { SearchBar } from './Pagination/SearchBar/SearchBar';
+import { CustomInput } from './Input/CustomInput';
+import { Select } from './Select/Select';
 
 export {
   Button,
@@ -24,4 +26,6 @@ export {
   SelectBox,
   Table,
   SearchBar,
+  CustomInput,
+  Select,
 };

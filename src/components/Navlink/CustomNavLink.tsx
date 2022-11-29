@@ -12,9 +12,9 @@ export const CustomNavLink = ({
   linksCollection,
   isHidden,
 }: NavLinkProps): JSX.Element => {
-  const renderLinks = linksCollection.map((link) => {
+  const renderLinks = linksCollection.map((link, index) => {
     return (
-      <li className={styles.wrapper}>
+      <li className={styles.wrapper} key={index}>
         <NavLink
           to={link.path}
           className={({ isActive }) =>
