@@ -5,6 +5,14 @@
   width: 100%;
   color: #3f6ad8;
 
+  .content {
+    display: flex;
+    justify-content: center;
+  }
+
+  li {
+    width: fit-content;
+  }
   p {
     margin: 0;
   }
@@ -17,6 +25,17 @@
   a {
     text-decoration: none;
     color: black;
+  }
+  .icon-container {
+    display: flex;
+    justify-content: center;
+    width: 3rem;
+    svg {
+      margin: 0;
+    }
+  }
+  .text-container {
+    display: flex;
   }
 
   &:hover {

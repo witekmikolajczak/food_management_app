@@ -52,8 +52,10 @@ export const Dashboard = () => {
         <div className={styles.row}>
           <div className={styles['last-recipts']}>
             <Table
+              text="Ostatnio przeglądane przepisy"
               reciptCollection={LATEST_RECIPT}
               icon={<AiOutlineLaptop size={25} />}
+              fnHandleClick={(recipt) => console.log(recipt)}
             />
           </div>
         </div>
