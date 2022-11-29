@@ -17,5 +17,14 @@ global {
     viewed: string;
     link: string;
   }
+
+  interface UnitInterface {
+    unit: string;
+  }
+  interface ProductUnitsInterface {
+    type: string;
+    text: string;
+    units: UnitInterface[];
+  }
 }
 export {};
