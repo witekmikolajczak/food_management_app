@@ -9,6 +9,7 @@ interface TableProps {
   tBodyCollection: JSX.Element[] | JSX.Element;
   text: string;
   fnHandleClick: (recipt: RecentlyViewedRecipt) => void;
+  className?: string;
 }
 
 export const Table = ({
@@ -16,11 +17,12 @@ export const Table = ({
   text,
   tHeadCollection,
   tBodyCollection,
+  className,
   fnHandleClick,
 }: TableProps) => {
   return (
     <Card
-      wrapperClassName={styles.wrapperClassName}
+      wrapperClassName={`${styles.wrapperClassName} ${className}`}
       icon={icon}
       text={text}
     >

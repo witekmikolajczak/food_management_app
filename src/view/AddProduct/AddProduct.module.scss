@@ -4,6 +4,7 @@
 
   .add {
     padding: 3rem;
+    width: 100%;
     .wrapperClassName {
       width: 400px;
     }
@@ -32,7 +33,28 @@
     }
 
     .table {
-      padding: 3rem;
+      // padding: 1rem;
+      margin-top: 5rem;
+      width: 100%;
     }
   }
+}
+.Enter {
+  opacity: 0;
+}
+.MyClassEnterActive {
+  opacity: 0;
+  // transition: 2s;
+  // background-color: black;
+}
+.MyClassEnterDone {
+  opacity: 1;
+  transition: 5s;
+}
+.MyClassExit {
+  left: 15px;
+}
+.MyClassExitActive {
+  left: 5px;
+  transition: left 500ms;
 }

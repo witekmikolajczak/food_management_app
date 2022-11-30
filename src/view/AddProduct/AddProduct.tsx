@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import { MdProductionQuantityLimits } from 'react-icons/md';
 import { IoFastFoodOutline } from 'react-icons/io5';
 
@@ -56,6 +57,7 @@ const renderTableBody = (
 
 export const AddProduct = (): JSX.Element => {
   // ---------state------------
+  const [showTable, setShowTable] = useState<boolean>(false);
   const [productName, setProductName] = useState<string>('');
   const [productCount, setProductCount] = useState<string>('');
   const [productDetails, setProductDetails] = useState<UnitInterface>(
@@ -71,13 +73,14 @@ export const AddProduct = (): JSX.Element => {
       productUnit: string;
     }[]
   >([]);
-  console.table({
-    productName,
-    productCount,
-    selectedProductUnit,
-    productDetails,
-  });
 
+  useEffect(() => {
+    if (product.length > 0) {
+      setShowTable(true);
+    } else {
+      setShowTable(false);
+    }
+  }, [product]);
   // -------------render options-------------------
   const optionCollectionList = productUnitCollection.map(
     (option, index) => {
@@ -209,15 +212,30 @@ export const AddProduct = (): JSX.Element => {
         </Card>
 
         <div className={styles.table}>
-          {product && (
+          <CSSTransition
+            in={showTable}
+            // nodeRef={nodeRef}
+            timeout={300}
+            classNames={{
+              enter: styles.Enter,
+              enterActive: styles.MyClassEnterActive,
+              enterDone: styles.MyClassEnterDone,
+              exitActive: styles.MyClassExit,
+              exitDone: styles.MyClassExitActive,
+            }}
+            unmountOnExit
+            // onEnter={() => setShowButton(false)}
+            // onExited={() => setShowButton(true)}
+          >
             <Table
+              className={styles.MyClass}
               tHeadCollection={renderTableHeaders()}
               tBodyCollection={renderTableBody(product)}
               text="Dodane produkty"
               icon={<IoFastFoodOutline size={25} />}
               fnHandleClick={(recipt) => console.log(recipt)}
             />
-          )}
+          </CSSTransition>
         </div>
       </div>
     </div>
