@@ -16,7 +16,7 @@ export const CustomNavLink = ({
     return (
       <li className={styles.wrapper} key={index}>
         <NavLink
-          to={link.path}
+          to={`/${link.path}`}
           className={({ isActive }) =>
             isActive ? styles.active : undefined
           }

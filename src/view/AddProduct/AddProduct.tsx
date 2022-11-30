@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdProductionQuantityLimits } from 'react-icons/md';
+import { IoFastFoodOutline } from 'react-icons/io5';
 
 import { productUnitCollection } from '../../util/constant/productOptionCollection';
 import {
@@ -8,38 +9,133 @@ import {
   Button,
   CustomInput,
   Select,
+  Table,
 } from '../../components';
 import styles from './AddProduct.module.scss';
-export const AddProduct = (): JSX.Element => {
-  const [porudctName, setProductName] = useState<string>('');
-  const [porudctCount, setProductCount] = useState<string>('');
-  const [productUnit, setProductUnit] =
-    useState<ProductUnitsInterface>(productUnitCollection[0]);
-  const handleProductType = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    productUnitCollection.map((unit) => {
-      if (unit.type === event.currentTarget.value) {
-        setProductUnit(unit);
-      }
-    });
+
+// ----------render table---------
+const renderTableHeaders = () => {
+  const TABLE_HEADERS = {
+    positionName: 'Nr.',
+    name: 'Nazwa',
+    count: 'Ilość',
   };
+  return (
+    <tr>
+      <td> {TABLE_HEADERS.positionName} </td>
+      <td> {TABLE_HEADERS.name} </td>
+      <td> {TABLE_HEADERS.count} </td>
+    </tr>
+  );
+};
+const renderTableBody = (
+  products: {
+    productName: string;
+    productCount: string;
+    productUnit: string;
+  }[]
+): JSX.Element => {
+  const renderAddedProducts = products.map(
+    ({ productCount, productName, productUnit }, index) => {
+      return (
+        <tr key={index}>
+          <td> {index} </td>
+          <td> {productName} </td>
+          <td>
+            <>
+              {productCount}
+              {productUnit}
+            </>
+          </td>
+        </tr>
+      );
+    }
+  );
+  return <>{renderAddedProducts}</>;
+};
+
+export const AddProduct = (): JSX.Element => {
+  // ---------state------------
+  const [productName, setProductName] = useState<string>('');
+  const [productCount, setProductCount] = useState<string>('');
+  const [productDetails, setProductDetails] = useState<UnitInterface>(
+    productUnitCollection[0]
+  );
+  const [selectedProductUnit, setSelectedProductUnit] =
+    useState<string>('kg');
+
+  const [product, setProduct] = useState<
+    {
+      productName: string;
+      productCount: string;
+      productUnit: string;
+    }[]
+  >([]);
+  console.table({
+    productName,
+    productCount,
+    selectedProductUnit,
+    productDetails,
+  });
+
+  // -------------render options-------------------
   const optionCollectionList = productUnitCollection.map(
     (option, index) => {
       return (
         <option key={index} value={option.type}>
-          {option.text}
+          {option.description}
         </option>
       );
     }
   );
-  const unitCollection = productUnit.units.map((option, index) => {
-    return (
-      <option key={index} value={option.unit}>
-        {option.unit}
-      </option>
-    );
-  });
+  const unitCollection = productUnitCollection.map(
+    (product, index) => {
+      if (product === productDetails) {
+        const renderUnits = product.units.map((unit, index) => {
+          return (
+            <option key={index} value={unit}>
+              {unit}
+            </option>
+          );
+        });
+        return (
+          <React.Fragment key={index}>{renderUnits}</React.Fragment>
+        );
+      } else {
+        return <React.Fragment key={index}></React.Fragment>;
+      }
+    }
+  );
+
+  // -----------------handlers---------------------
+
+  const handleProductType = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    productUnitCollection.map((product) => {
+      console.log(product.type);
+      console.log(e.currentTarget.value);
+
+      if (product.type === e.currentTarget.value)
+        setProductDetails(product);
+    });
+  };
+
+  const handleAddProduct = (
+    productName: string,
+    productCount: string,
+    productUnit: string
+  ) => {
+    if (productName && productCount && productUnit)
+      setProduct([
+        ...product,
+        {
+          productName: productName,
+          productCount: productCount,
+          productUnit: productUnit,
+        },
+      ]);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -57,7 +153,7 @@ export const AddProduct = (): JSX.Element => {
                 labelText="Dodaj nowy produkt"
                 placeholder="Nazwa produktu"
                 name="product-name"
-                value={porudctName}
+                value={productName}
                 fnHandleChange={(e) =>
                   setProductName(e.currentTarget.value)
                 }
@@ -76,7 +172,9 @@ export const AddProduct = (): JSX.Element => {
               <Select
                 label={true}
                 labelText="Jednostka produktu"
-                fnHandleSelectChange={(e) => handleProductType(e)}
+                fnHandleSelectChange={(e) =>
+                  setSelectedProductUnit(e.currentTarget.value)
+                }
               >
                 {unitCollection}
               </Select>
@@ -87,7 +185,7 @@ export const AddProduct = (): JSX.Element => {
                 labelText="Ilość"
                 placeholder="np. 10"
                 name="product-count"
-                value={porudctCount}
+                value={productCount}
                 fnHandleChange={(e) =>
                   setProductCount(e.currentTarget.value)
                 }
@@ -98,11 +196,29 @@ export const AddProduct = (): JSX.Element => {
               <Button
                 type="primary"
                 text="Dodaj"
-                fnHandleClick={() => console.log('clicked')}
+                fnHandleClick={() =>
+                  handleAddProduct(
+                    productName,
+                    productCount,
+                    selectedProductUnit
+                  )
+                }
               />
             </div>
           </div>
         </Card>
+
+        <div className={styles.table}>
+          {product && (
+            <Table
+              tHeadCollection={renderTableHeaders()}
+              tBodyCollection={renderTableBody(product)}
+              text="Dodane produkty"
+              icon={<IoFastFoodOutline size={25} />}
+              fnHandleClick={(recipt) => console.log(recipt)}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
