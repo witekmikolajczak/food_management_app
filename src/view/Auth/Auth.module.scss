@@ -1,89 +1,72 @@
 .wrapper {
   margin: 0;
-  background-color: lightgray;
+  background-color: #eee;
   height: calc(100vh - 10rem);
   display: flex;
   align-items: center;
   flex-direction: column;
   padding-top: 10rem;
 
-  .form-wrapper {
-    background-color: lightgreen;
-    width: 50rem;
-    height: 10rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  .wrapperClassName {
+    width: 600px;
+    height: 350px;
 
-    p {
-      margin: 0;
-    }
-
-    div {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      padding-top: 2rem;
-
-      input {
-        height: 2rem;
-        width: 100%;
-        background-color: inherit;
-        border: none;
-        border-bottom: 1px solid black;
-
-        &:last-child {
-          margin-left: 1rem;
-        }
-        &:focus {
-          outline: none;
-          border-bottom: 2px solid black;
-        }
-      }
-
-      input[name='email'] {
-        width: 50%;
-        margin-left: 25%;
-        text-align: center;
-      }
-    }
-
-    button {
-      margin: 1rem;
-      background-color: inherit;
-      border: 1px solid black;
-      outline: none;
-      padding: 0.5rem;
-    }
-
-    .register-button-container {
-      width: 100%;
-      justify-content: space-between;
+    .contentClassName {
       padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
 
-      button {
-        margin: 0;
-      }
-      .register-button-left {
+      .login,
+      .register {
         display: flex;
-        justify-content: flex-start;
-        padding-left: 1rem;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
 
-        p {
-          margin-left: 0.5rem;
+        .login-input,
+        .register-input {
+          width: 50%;
+
+          input {
+            &:last-child {
+              margin-top: 1rem;
+            }
+          }
+        }
+        button {
+          margin-top: 2rem;
         }
       }
-      .register-button-right {
-        display: flex;
-        justify-content: flex-end;
-        padding-right: 1rem;
-        p {
-          margin-right: 0.5rem;
-        }
+
+      .have-account {
+        align-self: center;
+        cursor: pointer;
       }
     }
   }
-  p {
-    cursor: pointer;
+
+  .register-button-container {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+      margin: 0;
+    }
+    .register-button-left {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding-left: 1rem;
+    }
+    .register-button-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: 1rem;
+    }
   }
 }
