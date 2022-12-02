@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './CustomInput.module.scss';
 
 interface InputProps {
-  label: boolean;
+  label?: boolean;
   labelText?: string;
   className?: string;
   placeholder: string;

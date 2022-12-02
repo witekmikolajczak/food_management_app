@@ -14,12 +14,24 @@ const variantsMapping = {
 interface TypographyProps {
   variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
   text: string;
+  fnHandleClick?: () => void;
+  className?: string;
 }
-export const Typography = ({ variant, text }: TypographyProps) => {
+export const Typography = ({
+  variant,
+  text,
+  className,
+  fnHandleClick,
+}: TypographyProps) => {
   const Component = variant ? variantsMapping[variant] : 'p';
 
   return (
-    <Component className={styles[`typography--variant-${variant}`]}>
+    <Component
+      onClick={fnHandleClick}
+      className={`${
+        styles[`typography--variant-${variant}`]
+      } ${className}`}
+    >
       {text}
     </Component>
   );
