@@ -8,7 +8,7 @@ import { Sidebar } from './Sidebar/Sidebar';
 import { Typography } from './Typography/Typography';
 import { Recipt } from './Recipt/Recipt';
 import { SelectBox } from './Pagination/SelectBox/SelectBox';
-import { Table } from './Pagination/Table/Table';
+import { Table } from './Table/Table';
 import { SearchBar } from './Pagination/SearchBar/SearchBar';
 import { CustomInput } from './Input/CustomInput';
 import { Select } from './Select/Select';

@@ -14,26 +14,61 @@ import {
 import styles from './Dashboard.module.scss';
 import { productCollection } from '../../util/constant/productCollection';
 import { LATEST_RECIPT } from '../../util/constant/latestRecipt';
+
+export const renderLatestReciptTableHeaders = (): JSX.Element => {
+  const LATEST_RECIPT_TABLE_HEADERS = {
+    positionNumber: 'Nr.',
+    name: 'Nazwa',
+    latest_viewd: 'Ostatnio przeglądane',
+    uri: 'Link',
+  };
+  return (
+    <tr>
+      <td>{LATEST_RECIPT_TABLE_HEADERS.positionNumber}</td>
+      <td>{LATEST_RECIPT_TABLE_HEADERS.name}</td>
+      <td>{LATEST_RECIPT_TABLE_HEADERS.latest_viewd}</td>
+      <td>{LATEST_RECIPT_TABLE_HEADERS.uri}</td>
+    </tr>
+  );
+};
+export const renderReciptCollectionTable = (): JSX.Element[] => {
+  const renderReciptCollection = LATEST_RECIPT.map(
+    (recipt, index) => {
+      return (
+        <tr onClick={() => console.log('clicked')}>
+          <td>{index}.</td>
+          <td>{recipt.name}</td>
+          <td>{recipt.viewed}</td>
+          <td>{recipt.link}</td>
+        </tr>
+      );
+    }
+  );
+  return renderReciptCollection;
+};
+
 export const Dashboard = () => {
   return (
     <div className={styles.wrapper}>
       <Layout />
       <div className={styles.content}>
         <div className={styles.row}>
-          <div className={styles['product-count']}>
+          <div className={styles['counter-container']}>
             <Card
               icon={<MdOutlineProductionQuantityLimits size={50} />}
               text="Ilość dostępnych produktów"
+              wrapperClassName={styles.wrapperClassName}
+              contentClassName={styles.contentClassName}
             >
               <div className={styles.counter}>
                 <Counter delay={50} min={0} max={200} />
               </div>
             </Card>
-          </div>
-          <div className={styles['recipt-count']}>
             <Card
               icon={<IoDocumentTextOutline size={50} />}
               text="Ilość dostępnych produktów"
+              wrapperClassName={styles.wrapperClassName}
+              contentClassName={styles.contentClassName}
             >
               <div className={styles.counter}>
                 <Counter delay={50} min={0} max={200} />
@@ -42,18 +77,19 @@ export const Dashboard = () => {
           </div>
         </div>
         <div className={styles.row}>
-          <div className={styles['available-products']}>
+          {/* <div className={styles['available-products']}>
             <Typography variant="h5" text="Dostępne produkty" />
             <div className={styles.table}>
               <Product productCollection={productCollection} />
             </div>
-          </div>
+          </div> */}
         </div>
         <div className={styles.row}>
           <div className={styles['last-recipts']}>
             <Table
+              tHeadCollection={renderLatestReciptTableHeaders()}
+              tBodyCollection={renderReciptCollectionTable()}
               text="Ostatnio przeglądane przepisy"
-              reciptCollection={LATEST_RECIPT}
               icon={<AiOutlineLaptop size={25} />}
               fnHandleClick={(recipt) => console.log(recipt)}
             />

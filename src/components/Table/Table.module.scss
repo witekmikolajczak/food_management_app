@@ -21,11 +21,19 @@
       padding: 0.5rem;
     }
 
-    .recipt {
+    tbody tr {
       &:hover {
         background-color: #e0f3ff;
       }
     }
+  }
+  .under-table {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.2rem;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: flex-end;
   }
 }
 .wrapper {

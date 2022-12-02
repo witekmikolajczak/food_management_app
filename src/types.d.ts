@@ -19,12 +19,9 @@ global {
   }
 
   interface UnitInterface {
-    unit: string;
-  }
-  interface ProductUnitsInterface {
     type: string;
-    text: string;
-    units: UnitInterface[];
+    units: string[];
+    description: string;
   }
 }
 export {};

@@ -1,17 +1,17 @@
 .wrapper {
   display: flex;
   background-color: #eee;
-
+  min-height: 100vh;
   .add {
     padding: 3rem;
+    width: 100%;
     .wrapperClassName {
       width: 400px;
     }
 
     .card-content {
       padding: 1rem;
-      .product-name {
-      }
+
       .product-type {
         margin-top: 2rem;
       }
@@ -30,5 +30,42 @@
         }
       }
     }
+
+    .table {
+      // padding: 1rem;
+      margin-top: 5rem;
+      width: 100%;
+    }
+    .delete {
+      width: 50px;
+      text-align: center;
+
+      svg {
+        cursor: pointer;
+
+        &:hover {
+          color: red;
+        }
+      }
+    }
   }
+}
+.Enter {
+  opacity: 0;
+}
+.MyClassEnterActive {
+  opacity: 0;
+  // transition: 2s;
+  // background-color: black;
+}
+.MyClassEnterDone {
+  opacity: 1;
+  transition: 5s;
+}
+.MyClassExit {
+  left: 15px;
+}
+.MyClassExitActive {
+  left: 5px;
+  transition: left 500ms;
 }

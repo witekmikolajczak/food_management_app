@@ -1,8 +1,4 @@
-export const productUnitCollection: ProductUnitsInterface[] = [
-  {
-    type: 'weight',
-    text: 'Waga',
-    units: [{ unit: 'kg' }, { unit: 'g' }, { unit: 'dag' }],
-  },
-  { type: 'count', text: 'Ilość', units: [{ unit: 'szt' }] },
+export const productUnitCollection: UnitInterface[] = [
+  { type: 'weight', units: ['kg', 'g', 'dag'], description: 'Waga' },
+  { type: 'count', units: ['szt.'], description: 'Ilość' },
 ];
