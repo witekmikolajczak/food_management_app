@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { MdProductionQuantityLimits } from 'react-icons/md';
+import { AiOutlineDelete } from 'react-icons/ai';
 import { IoFastFoodOutline } from 'react-icons/io5';
 
 import { productUnitCollection } from '../../util/constant/productOptionCollection';
@@ -15,45 +16,6 @@ import {
 import styles from './AddProduct.module.scss';
 
 // ----------render table---------
-const renderTableHeaders = () => {
-  const TABLE_HEADERS = {
-    positionName: 'Nr.',
-    name: 'Nazwa',
-    count: 'Ilość',
-  };
-  return (
-    <tr>
-      <td> {TABLE_HEADERS.positionName} </td>
-      <td> {TABLE_HEADERS.name} </td>
-      <td> {TABLE_HEADERS.count} </td>
-    </tr>
-  );
-};
-const renderTableBody = (
-  products: {
-    productName: string;
-    productCount: string;
-    productUnit: string;
-  }[]
-): JSX.Element => {
-  const renderAddedProducts = products.map(
-    ({ productCount, productName, productUnit }, index) => {
-      return (
-        <tr key={index}>
-          <td> {index} </td>
-          <td> {productName} </td>
-          <td>
-            <>
-              {productCount}
-              {productUnit}
-            </>
-          </td>
-        </tr>
-      );
-    }
-  );
-  return <>{renderAddedProducts}</>;
-};
 
 export const AddProduct = (): JSX.Element => {
   // ---------state------------
@@ -66,8 +28,9 @@ export const AddProduct = (): JSX.Element => {
   const [selectedProductUnit, setSelectedProductUnit] =
     useState<string>('kg');
 
-  const [product, setProduct] = useState<
+  const [products, setProducts] = useState<
     {
+      productId: string;
       productName: string;
       productCount: string;
       productUnit: string;
@@ -75,12 +38,65 @@ export const AddProduct = (): JSX.Element => {
   >([]);
 
   useEffect(() => {
-    if (product.length > 0) {
+    if (products.length > 0) {
       setShowTable(true);
     } else {
       setShowTable(false);
     }
-  }, [product]);
+  }, [products]);
+
+  const renderTableHeaders = () => {
+    const TABLE_HEADERS = {
+      positionName: 'Nr.',
+      name: 'Nazwa',
+      count: 'Ilość',
+      delete: 'Usuń',
+    };
+    return (
+      <tr>
+        <td>{TABLE_HEADERS.positionName}</td>
+        <td>{TABLE_HEADERS.name}</td>
+        <td>{TABLE_HEADERS.count}</td>
+        <td>{TABLE_HEADERS.delete}</td>
+      </tr>
+    );
+  };
+  const renderTableBody = (
+    products: {
+      productId: string;
+      productName: string;
+      productCount: string;
+      productUnit: string;
+    }[]
+  ): JSX.Element => {
+    const renderAddedProducts = products.map(
+      (
+        { productId, productCount, productName, productUnit },
+        index
+      ) => {
+        return (
+          <tr key={index}>
+            <td>{index}.</td>
+            <td>{productName} </td>
+            <td>
+              <>
+                {productCount}
+                {productUnit}
+              </>
+            </td>
+            <td className={styles.delete}>
+              <AiOutlineDelete
+                onClick={() => handleDeleteFromTable(productId)}
+                size={25}
+              />
+            </td>
+          </tr>
+        );
+      }
+    );
+    return <>{renderAddedProducts}</>;
+  };
+
   // -------------render options-------------------
   const optionCollectionList = productUnitCollection.map(
     (option, index) => {
@@ -125,19 +141,27 @@ export const AddProduct = (): JSX.Element => {
   };
 
   const handleAddProduct = (
+    productId: string,
     productName: string,
     productCount: string,
     productUnit: string
   ) => {
     if (productName && productCount && productUnit)
-      setProduct([
-        ...product,
+      setProducts([
+        ...products,
         {
+          productId: productId,
           productName: productName,
           productCount: productCount,
           productUnit: productUnit,
         },
       ]);
+  };
+
+  const handleDeleteFromTable = (productId: string) => {
+    setProducts(
+      products.filter((value) => value.productId !== productId)
+    );
   };
 
   return (
@@ -201,6 +225,7 @@ export const AddProduct = (): JSX.Element => {
                 text="Dodaj"
                 fnHandleClick={() =>
                   handleAddProduct(
+                    Math.random().toString(),
                     productName,
                     productCount,
                     selectedProductUnit
@@ -230,10 +255,13 @@ export const AddProduct = (): JSX.Element => {
             <Table
               className={styles.MyClass}
               tHeadCollection={renderTableHeaders()}
-              tBodyCollection={renderTableBody(product)}
+              tBodyCollection={renderTableBody(products)}
               text="Dodane produkty"
               icon={<IoFastFoodOutline size={25} />}
               fnHandleClick={(recipt) => console.log(recipt)}
+              showButton={true}
+              buttonText="Wyślij"
+              buttonType="primary"
             />
           </CSSTransition>
         </div>

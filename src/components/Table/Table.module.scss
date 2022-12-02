@@ -27,6 +27,14 @@
       }
     }
   }
+  .under-table {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.2rem;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 .wrapper {
   padding: 1rem;

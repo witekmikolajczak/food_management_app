@@ -18,19 +18,18 @@
     .row .recipt-count {
       margin-left: 5rem;
     }
-
-    .product-count,
-    .recipt-count {
+    .counter-container {
       width: 100%;
-      height: 20vh;
       display: flex;
-      align-items: center;
       justify-content: space-around;
-      padding: 1rem;
-
-      .counter {
+      .wrapperClassName {
+        width: 600px;
+        height: 200px;
         display: flex;
-        justify-content: center;
+      }
+      .contentClassName {
+        padding: 1rem;
+        align-self: center;
       }
     }
 

@@ -1,5 +1,10 @@
 import { GrFormAdd } from 'react-icons/gr';
-import { AiFillEdit, AiOutlineDelete } from 'react-icons/ai';
+import {
+  AiFillEdit,
+  AiOutlineDelete,
+  AiOutlineOrderedList,
+  AiOutlineHome,
+} from 'react-icons/ai';
 export const SIDEBAR_LINKS_COLLECTION = [
   {
     id: '0',
@@ -23,6 +28,12 @@ export const SIDEBAR_LINKS_COLLECTION = [
     id: '2',
     name: 'Lista przepisów',
     path: 'recipt-list',
-    icon: <AiOutlineDelete size={20} />,
+    icon: <AiOutlineOrderedList size={20} />,
+  },
+  {
+    id: '3',
+    name: 'Strona główna',
+    path: 'dashboard',
+    icon: <AiOutlineHome size={20} />,
   },
 ];

@@ -53,20 +53,22 @@ export const Dashboard = () => {
       <Layout />
       <div className={styles.content}>
         <div className={styles.row}>
-          <div className={styles['product-count']}>
+          <div className={styles['counter-container']}>
             <Card
               icon={<MdOutlineProductionQuantityLimits size={50} />}
               text="Ilość dostępnych produktów"
+              wrapperClassName={styles.wrapperClassName}
+              contentClassName={styles.contentClassName}
             >
               <div className={styles.counter}>
                 <Counter delay={50} min={0} max={200} />
               </div>
             </Card>
-          </div>
-          <div className={styles['recipt-count']}>
             <Card
               icon={<IoDocumentTextOutline size={50} />}
               text="Ilość dostępnych produktów"
+              wrapperClassName={styles.wrapperClassName}
+              contentClassName={styles.contentClassName}
             >
               <div className={styles.counter}>
                 <Counter delay={50} min={0} max={200} />
@@ -75,12 +77,12 @@ export const Dashboard = () => {
           </div>
         </div>
         <div className={styles.row}>
-          <div className={styles['available-products']}>
+          {/* <div className={styles['available-products']}>
             <Typography variant="h5" text="Dostępne produkty" />
             <div className={styles.table}>
               <Product productCollection={productCollection} />
             </div>
-          </div>
+          </div> */}
         </div>
         <div className={styles.row}>
           <div className={styles['last-recipts']}>

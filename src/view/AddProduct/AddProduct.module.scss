@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   background-color: #eee;
-
+  min-height: 100vh;
   .add {
     padding: 3rem;
     width: 100%;
@@ -11,8 +11,7 @@
 
     .card-content {
       padding: 1rem;
-      .product-name {
-      }
+
       .product-type {
         margin-top: 2rem;
       }
@@ -36,6 +35,18 @@
       // padding: 1rem;
       margin-top: 5rem;
       width: 100%;
+    }
+    .delete {
+      width: 50px;
+      text-align: center;
+
+      svg {
+        cursor: pointer;
+
+        &:hover {
+          color: red;
+        }
+      }
     }
   }
 }
