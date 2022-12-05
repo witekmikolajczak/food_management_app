@@ -10,10 +10,13 @@
     "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
+    "@types/react-redux": "^7.1.24",
     "@types/react-transition-group": "^4.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
     "react-transition-group": "^4.4.5",
     "sass": "^1.56.1",

@@ -1,4 +1,5 @@
 global {
+
   interface LinkInterface {
     path: string;
     name?: string;
