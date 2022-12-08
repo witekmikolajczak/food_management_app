@@ -1,5 +1,13 @@
 global {
 
+  interface AuthInterface {
+    id: string;
+    name: string;
+    placeholder: string;
+    page?: number;
+    value: string;
+  }
+
   interface LinkInterface {
     path: string;
     name?: string;

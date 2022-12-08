@@ -61,12 +61,14 @@
       justify-content: flex-start;
       align-items: center;
       padding-left: 1rem;
+      cursor: pointer;
     }
     .register-button-right {
       display: flex;
       justify-content: flex-end;
       align-items: center;
       padding-right: 1rem;
+      cursor: pointer;
     }
   }
 }

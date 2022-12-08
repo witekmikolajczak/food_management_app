@@ -1,12 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 const initialState: {
-  firstname:string, 
-  lastname:string, 
+  id:string,
+  firstname:string,
+  lastname:string,
+  username:string,
+  email:string,
+  createdAt:string,
   sessionToken:string
 }= {
+  id:'',
   firstname:'',
   lastname:'',
+  username:'',
+  email:'',
+  createdAt:'',
   sessionToken:''
 }
 

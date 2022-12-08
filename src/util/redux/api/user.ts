@@ -5,52 +5,23 @@ const VITE_APP_PARSE_APP_ID = import.meta.env.VITE_APP_PARSE_APP_ID
 
 export const authApi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: `${VITE_APP_REST_API_URL}/parse`,
+    baseUrl: `${VITE_APP_REST_API_URL}/parse/functions`,
   }),
   refetchOnMountOrArgChange: true,
   endpoints: (build) => ({
-
-    register: build.mutation({
+    userFullData: build.mutation({
       query: (data:{
-        firstname:string, 
-        lastname:string, 
-        username:string, 
-        password:string, 
-        email:string
+        sessionToken:string, 
       } 
     ) => ({ 
-        url: `/users`, 
+        url: `/userFullData`, 
         method: 'POST', 
         headers: {
-           'X-Parse-Application-Id': VITE_APP_PARSE_APP_ID
+           'X-Parse-Application-Id': VITE_APP_PARSE_APP_ID,
+           'X-Parse-Session-Token': data.sessionToken
         },
-        body: data
       }),
-      transformResponse: (
-        response: {
-          result: {
-            id:string, 
-            createdAt:string, 
-            sessionToken:string
-          }
-        }) => {
-        return response.result;
-      },
-    }),
 
-    login: build.mutation({
-      query: (data:{
-        username:string, 
-        password:string, 
-      } 
-    ) => ({ 
-        url: `/login`, 
-        method: 'POST', 
-        headers: {
-           'X-Parse-Application-Id': VITE_APP_PARSE_APP_ID
-        },
-        body: data
-      }),
       transformResponse: (
         response: {
           objectId:string,
@@ -77,4 +48,4 @@ export const authApi = createApi({
   }),
 });
 
-export const { useRegisterMutation, useLoginMutation } = authApi;
+export const { useUserFullDataMutation } = authApi;
