@@ -4,32 +4,33 @@ import {
   AiOutlineArrowLeft,
   AiOutlineArrowRight,
 } from 'react-icons/ai';
-import { REGISTER_OBJECT } from '../../util/constant/auth';
+import { AUTH_OBJECT } from '../../util/constant/auth';
 import { CustomInput, Button, Typography } from '../../components';
 
 import styles from './Auth.module.scss';
 
 export const Register = () => {
+
   const {
-    values,
     step,
     handleClickBack,
     handleClickForward,
-    setValues,
+    handleValuesChange,
+    handleRegister
   } = useAuth();
+
   return (
     <React.Fragment>
       <div className={styles.register}>
-        {REGISTER_OBJECT.map((input, index) => {
+        {AUTH_OBJECT.map((input, index) => {
           if (step == input.page)
             return (
               <CustomInput
                 key={index}
                 placeholder={input.placeholder}
                 name={input.name}
-                value={values}
                 className={styles['register-input']}
-                fnHandleChange={() => setValues}
+                fnHandleChange={(event) => handleValuesChange(event)}
               />
             );
         })}
@@ -44,7 +45,7 @@ export const Register = () => {
             text="Cofnij"
           />
         </div>
-        {step !== Math.floor(REGISTER_OBJECT.length / 2) ? (
+        {step !== Math.floor(AUTH_OBJECT.length / 2) ? (
           <div className={styles['register-button-right']}>
             <Typography
               variant="p"
@@ -59,7 +60,7 @@ export const Register = () => {
           <Button
             text="Zarejestruj się"
             type="primary"
-            fnHandleClick={() => console.log('register')}
+            fnHandleClick={handleRegister}
           />
         )}
       </div>

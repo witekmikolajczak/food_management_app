@@ -8,7 +8,7 @@ interface InputProps {
   className?: string;
   placeholder: string;
   name: string;
-  value: string | number | undefined;
+  value?: string | number | undefined;
   fnHandleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export const CustomInput = ({

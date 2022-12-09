@@ -1,18 +1,4 @@
-export const LOGIN_OBJECT = [
-  {
-    id: '0',
-    name: 'login',
-    placeholder: 'Login',
-    value: '',
-  },
-  {
-    id: '1',
-    name: 'password',
-    placeholder: 'Hasło',
-    value: '',
-  },
-];
-export const REGISTER_OBJECT = [
+export const AUTH_OBJECT: AuthInterface[] = [
   {
     id: '0',
     name: 'firstname',
@@ -28,6 +14,13 @@ export const REGISTER_OBJECT = [
     value: '',
   },
   {
+    id:'5',
+    name:'login',
+    placeholder: 'Login',
+    page:2,
+    value:''
+  },
+  {
     id: '3',
     name: 'password',
     placeholder: 'Hasło',
@@ -41,11 +34,12 @@ export const REGISTER_OBJECT = [
     page: 1,
     value: '',
   },
+
   {
     id: '2',
     name: 'email',
     placeholder: 'Email',
     page: 2,
     value: '',
-  },
+  }
 ];
