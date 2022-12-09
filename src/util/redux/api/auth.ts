@@ -74,7 +74,18 @@ export const authApi = createApi({
         return result;
       },
     }),
+
+    logout: build.mutation({
+      query: (sessionToken:string) => ({ 
+        url: `/logout`, 
+        method: 'POST', 
+        headers: {
+           'X-Parse-Application-Id': VITE_APP_PARSE_APP_ID,
+           'X-Parse-Session-Token' : sessionToken
+        },
+      }),
+    }),
   }),
 });
 
-export const { useRegisterMutation, useLoginMutation } = authApi;
+export const { useRegisterMutation, useLoginMutation, useLogoutMutation } = authApi;

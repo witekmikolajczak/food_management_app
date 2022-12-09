@@ -5,8 +5,10 @@ import { useAppDispatch } from '../redux/hook';
 import { loadAuthData } from '../redux/reducer/auth';
 import { AUTH_OBJECT } from '../constant/auth';
 import { useAppSelector } from '../redux/hook';
+import { useNavigate } from 'react-router-dom';
 
 export const useAuth = () => {
+  const navigate = useNavigate()
   const [values, setValues] = useState<Array<AuthInterface>>(AUTH_OBJECT);
   const [step, setStep] = useState<number>(0);
   const state = useAppSelector((state)=>state.auth)
@@ -72,6 +74,7 @@ export const useAuth = () => {
     const password = values.filter((value)=>value.name === 'password')[0].value;
 
     await login({username, password})
+    navigate('/dashboard')
   }
 
   async function handleRegister(){
@@ -96,7 +99,8 @@ export const useAuth = () => {
       loginResult && 
       loginSuccess && 
       !loginError
-    ) dispatch(loadAuthData(loginResult))
+    ) dispatch(loadAuthData({...loginResult, isAuthenticated:true}))
+    
   },[loginResult, loginSuccess, loginError])
 
   useEffect(()=>{
