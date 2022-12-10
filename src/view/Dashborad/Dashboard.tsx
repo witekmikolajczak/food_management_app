@@ -47,6 +47,19 @@ export const renderReciptCollectionTable = (): JSX.Element[] => {
   return renderReciptCollection;
 };
 
+function renderPorudctCollection(){
+  const collection = productCollection.map((product, index)=>{
+    return (
+      <div key={index} className={styles.product}>
+        <p>{product.name}</p>
+        <p>{product.count}</p>
+        <p>{product.unit}</p>
+      </div>
+    )
+  })
+  return collection
+}
+
 export const Dashboard = () => {
   return (
     <div className={styles.wrapper}>
@@ -77,12 +90,29 @@ export const Dashboard = () => {
           </div>
         </div>
         <div className={styles.row}>
-          {/* <div className={styles['available-products']}>
-            <Typography variant="h5" text="Dostępne produkty" />
-            <div className={styles.table}>
-              <Product productCollection={productCollection} />
-            </div>
-          </div> */}
+          <div className={styles['section2']}>
+            <Card
+              icon={<IoDocumentTextOutline size={50} />}
+              text="Ostatnio dodane produkty"
+              wrapperClassName={styles.wrapperClassName}
+              contentClassName={styles.contentClassName}
+            >
+              <div className={styles['last-added-products']}>
+                  {renderPorudctCollection()}
+              </div>
+            </Card>
+            <Card
+              icon={<IoDocumentTextOutline size={50} />}
+              text="Kończące się produkty"
+              wrapperClassName={styles.wrapperClassName}
+              contentClassName={styles.contentClassName}
+            >
+              <div className={styles['last-products']}>
+                  {renderPorudctCollection()}
+              </div>
+            </Card>
+          </div>
+
         </div>
         <div className={styles.row}>
           <div className={styles['last-recipts']}>

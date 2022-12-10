@@ -22,6 +22,7 @@
       width: 100%;
       display: flex;
       justify-content: space-around;
+      
       .wrapperClassName {
         width: 600px;
         height: 200px;
@@ -33,13 +34,35 @@
       }
     }
 
-    .available-products {
-      width: 50%;
-      margin-right: 10%;
-      .table {
+    .section2{
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+
+      .wrapperClassName:first-child {
+        border: 1px solid var(--green);
+      }
+
+      .wrapperClassName:nth-child(2) {
+        border: 1px solid var(--red);
+
+      }
+
+      .last-added-products, .last-products{
+        width: 700px;
         height: 400px;
+        overflow-y: scroll;
+
+        .product {
+          display: flex;
+          width: 100%;
+          justify-content: space-evenly;
+          height: 100px;
+          align-items: center;
+        }
       }
     }
+
 
     .last-recipts {
       width: 100%;
