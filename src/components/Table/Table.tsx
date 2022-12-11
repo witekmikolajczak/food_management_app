@@ -6,9 +6,9 @@ import styles from './Table.module.scss';
 
 interface TableProps {
   icon: JSX.Element;
-  tHeadCollection: JSX.Element[] | JSX.Element;
-  tBodyCollection: JSX.Element[] | JSX.Element;
-  tFootCollection?: JSX.Element[] | JSX.Element;
+  tHeadCollection: any;
+  tBodyCollection: any[];
+  tFootCollection?: any[];
   text: string;
   fnHandleClick: (recipt: RecentlyViewedRecipt) => void;
   className?: string;
@@ -34,6 +34,34 @@ export const Table = ({
   fnHandleButtonClick,
   fnHandleClick,
 }: TableProps) => {
+
+  function handleTheadCollection():JSX.Element[]{    
+    const collection:JSX.Element[] = Object.values(tHeadCollection).map((value:any,index:number)=>{      
+      return <td key={index}>{value}</td>
+    })
+    // console.log('HERE');
+    // console.log(collection);
+    
+    
+    return collection
+  }
+
+  function handleTbodyCollection():JSX.Element[]{
+    const arrayTr:any[] = []
+    tBodyCollection.map((value,mapIndex)=>{
+      const arrayTd:JSX.Element[]=[]
+      Object.entries(value).map(([key,value]:any, index)=>{  
+        arrayTd.push(<td key={key}>{value}</td>)
+      })  
+      arrayTr.push(arrayTd)
+
+    })    
+    const collection: JSX.Element[] = arrayTr.map((tr, trKey)=>{
+      return <tr key={trKey}>{tr}</tr>
+    })    
+    return collection
+  }
+
   return (
     <Card
       wrapperClassName={`${styles.wrapperClassName} ${className}`}
@@ -42,8 +70,16 @@ export const Table = ({
     >
       <div className={styles.wrapper}>
         <table className={styles.table}>
-          <thead>{tHeadCollection}</thead>
-          <tbody>{tBodyCollection}</tbody>
+          <thead>
+            <tr>
+              {handleTheadCollection()}
+            </tr>
+          </thead>
+          <tbody>
+            
+              {handleTbodyCollection()}
+            
+          </tbody>
           {showFooter && <tfoot>{tFootCollection}</tfoot>}
         </table>
       </div>

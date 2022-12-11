@@ -29,7 +29,9 @@ global {
 
   interface UnitInterface {
     type: string;
-    units: string[];
+    units:{
+      description:string
+    }[]
     description: string;
   }
 }

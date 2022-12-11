@@ -12,7 +12,6 @@ export const useAuth = () => {
   const [values, setValues] = useState<Array<AuthInterface>>(AUTH_OBJECT);
   const [step, setStep] = useState<number>(0);
   const state = useAppSelector((state)=>state.auth)
-  console.log(state);
 
   const [
     login, 
