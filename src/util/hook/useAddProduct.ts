@@ -1,8 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { productCollection } from "../constant/productCollection";
 import { productUnitCollection } from "../constant/productOptionCollection";
+import { useCreateProductMutation } from "../redux/api/product";
+import { useAppSelector } from "../redux/hook";
 
 export function useAddProduct(){
+  const [
+    createProduct,
+    {
+      isError: createProductError,
+      isLoading:createProductLoading,
+      isSuccess:createProductSuccess,
+      data: createProductData
+    }
+  ] = useCreateProductMutation()
+  const sessionToken = useAppSelector((state)=>state.auth.sessionToken)
    const [showTable, setShowTable] = useState<boolean>(false);
    const [productName, setProductName] = useState<string>('');
    const [productCount, setProductCount] = useState<string>('');
@@ -32,6 +44,31 @@ export function useAddProduct(){
       );
    };
 
+   function handleSendProduct(){
+    const array:ProductInterface[]=[]
+    products.map((product)=>{
+      const result = {
+        productName:product.productName,
+        productCount:product.productCount,
+        productUnit:product.productUnit,
+        productType: selectedProductUnit
+      }
+      array.push(result)
+    })
+
+    const dataToSend = {
+      body: array,
+      sessionToken: sessionToken
+    }
+    createProduct(dataToSend)
+   }
+
+   useEffect(()=>{
+    if(createProductSuccess){
+      console.log(createProductData);
+    }
+   },[createProductError, createProductLoading, createProductSuccess])
+
    return {
       showTable,
       productName,
@@ -42,6 +79,7 @@ export function useAddProduct(){
 
       handleProductType,
       handleDeleteFromTable,
+      handleSendProduct,
 
 
       setShowTable,

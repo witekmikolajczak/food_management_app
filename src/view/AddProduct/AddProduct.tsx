@@ -40,6 +40,7 @@ export const AddProduct = (): JSX.Element => {
     
     handleDeleteFromTable, 
     handleProductType, 
+    handleSendProduct
   } = useAddProduct()
   // useEffect(() => {
   //   if (products.length > 0) {
@@ -149,7 +150,7 @@ export const AddProduct = (): JSX.Element => {
               tBodyCollection={products}
               text="Dodane produkty"
               icon={<IoFastFoodOutline size={25} />}
-              fnHandleClick={(recipt) => console.log(recipt)}
+              fnHandleButtonClick={handleSendProduct}
               showButton={true}
               buttonText="Wyślij"
               buttonType="primary"

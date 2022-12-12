@@ -10,14 +10,14 @@ interface TableProps {
   tBodyCollection: any[];
   tFootCollection?: any[];
   text: string;
-  fnHandleClick: (recipt: RecentlyViewedRecipt) => void;
+  // fnHandleClick: () => void;
   className?: string;
   showFooter?: boolean;
 
   showButton?: boolean;
   buttonText?: string;
   buttonType?: 'primary' | 'secondary';
-  fnHandleButtonClick?: () => void;
+  fnHandleButtonClick: () => void;
 }
 
 export const Table = ({
@@ -32,7 +32,7 @@ export const Table = ({
   buttonText,
   buttonType,
   fnHandleButtonClick,
-  fnHandleClick,
+  // fnHandleClick,
 }: TableProps) => {
 
   function handleTheadCollection():JSX.Element[]{    
@@ -88,7 +88,7 @@ export const Table = ({
           <div className={styles['under-table']}>
             <Button
               text={buttonText!}
-              fnHandleClick={() => fnHandleButtonClick}
+              fnHandleClick={fnHandleButtonClick}
               type={buttonType!}
             />
           </div>
