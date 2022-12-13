@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Card } from './Card';
 
-import { productCollection } from '../../util/constant/productCollection';
+import { productCollection } from '../../features/constant/productCollection';
 import { Counter } from '../Counter/Counter';
 import { AiFillAccountBook } from 'react-icons/ai';
 

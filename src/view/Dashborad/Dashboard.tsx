@@ -12,8 +12,8 @@ import {
 } from '../../components';
 
 import styles from './Dashboard.module.scss';
-import { productCollection } from '../../util/constant/productCollection';
-import { LATEST_RECIPT, LATEST_RECIPT_TABLE_HEADERS } from '../../util/constant/latestRecipt';
+import { productCollection } from '../../features/constant/productCollection';
+import { LATEST_RECIPT, LATEST_RECIPT_TABLE_HEADERS } from '../../features/constant/latestRecipt';
 
 // export const renderReciptCollectionTable = (): JSX.Element[] => {
 //   const renderReciptCollection = LATEST_RECIPT.map(
@@ -105,7 +105,7 @@ export const Dashboard = () => {
               tBodyCollection={LATEST_RECIPT}
               text="Ostatnio przeglądane przepisy"
               icon={<AiOutlineLaptop size={25} />}
-              fnHandleClick={(recipt) => console.log(recipt)}
+              fnHandleButtonClick={()=>{}}
             />
           </div>
         </div>

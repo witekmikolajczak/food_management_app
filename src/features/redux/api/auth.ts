@@ -28,13 +28,11 @@ export const authApi = createApi({
       }),
       transformResponse: (
         response: {
-          result: {
-            id:string, 
-            createdAt:string, 
-            sessionToken:string
-          }
+          id:string, 
+          createdAt:string, 
+          sessionToken:string
         }) => {
-        return response.result;
+        return response;
       },
     }),
 

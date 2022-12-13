@@ -17,7 +17,8 @@ export const useAuth = () => {
     login, 
     {
       data: loginResult,
-      isError: loginError,
+      isError: loginIsError,
+      error: loginError,
       isLoading: loginLoading,
       isSuccess: loginSuccess
     }
@@ -36,6 +37,9 @@ export const useAuth = () => {
     userFullData,
     {
     data: userData,
+    isError: userDataIsError,
+    isLoading: userDataIsLoading,
+    isSuccess: userDataIsSuccess
   }
 ] = useUserFullDataMutation()
   const dispatch = useAppDispatch()
@@ -71,9 +75,7 @@ export const useAuth = () => {
   async function handleLogin(){
     const username = values.filter((value)=>value.name === 'login')[0].value;
     const password = values.filter((value)=>value.name === 'password')[0].value;
-
-    await login({username, password})
-    navigate('/dashboard')
+    await login({username, password})    
   }
 
   async function handleRegister(){
@@ -83,33 +85,51 @@ export const useAuth = () => {
     const password = values.filter((value)=>value.name === 'password')[0].value;
     const email = values.filter((value)=>value.name === 'email')[0].value;
 
-    const response = await register({
+    await register({
       firstname,
       lastname,
       username,
       password,
       email
-    })
-    // await userFullData({response.sessionToken}) 
+    })    
   }
 
   useEffect(()=>{
     if(
       loginResult && 
       loginSuccess && 
-      !loginError
-    ) dispatch(loadAuthData({...loginResult, isAuthenticated:true}))
+      !loginIsError
+    ){
+      dispatch(loadAuthData({...loginResult, isAuthenticated:true}))
+      navigate('/dashboard')
+    }
+    if(loginIsError){
+      alert('Invalid username/password')
+    }
     
   },[loginResult, loginSuccess, loginError])
-
+  
   useEffect(()=>{
-    // if(
-    //   registerResult && 
-    //   registerSuccess && 
-    //   !registerError
-    // ) dispatch(loadAuthData(registerResult))
+    if(
+      registerResult && 
+      registerSuccess && 
+      !registerError
+    ){
+      userFullData(registerResult.sessionToken)
+    }
   },[registerResult, registerSuccess, registerError])
 
+  useEffect(()=>{
+    if(
+      userData && 
+      userDataIsSuccess && 
+      !userDataIsError
+    ){
+      dispatch(loadAuthData(userData))  
+      navigate('/dashboard')
+    }
+    
+  },[userData, userDataIsError, userDataIsLoading, userDataIsSuccess])
   return {
     step,
     handleClickBack,

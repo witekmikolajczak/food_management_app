@@ -4,7 +4,7 @@ import { MdProductionQuantityLimits } from 'react-icons/md';
 import { IoFastFoodOutline } from 'react-icons/io5';
 import { AiOutlineDelete } from 'react-icons/ai';
 
-import { productUnitCollection } from '../../util/constant/productOptionCollection';
+import { productUnitCollection } from '../../features/constant/productOptionCollection';
 import {
   Layout,
   Card,
@@ -14,7 +14,7 @@ import {
   Table,
 } from '../../components';
 import styles from './AddProduct.module.scss';
-import { useAddProduct } from '../../util/hook/useAddProduct';
+import { useAddProduct } from '../../features/hook/useAddProduct';
 
 // ----------render table---------
 const TABLE_HEADERS = {

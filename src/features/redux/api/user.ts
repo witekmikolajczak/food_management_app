@@ -10,39 +10,29 @@ export const authApi = createApi({
   refetchOnMountOrArgChange: true,
   endpoints: (build) => ({
     userFullData: build.mutation({
-      query: (data:{
-        sessionToken:string, 
-      } 
-    ) => ({ 
+      query: (sessionToken:string ) => ({ 
         url: `/userFullData`, 
         method: 'POST', 
         headers: {
            'X-Parse-Application-Id': VITE_APP_PARSE_APP_ID,
-           'X-Parse-Session-Token': data.sessionToken
+           'X-Parse-Session-Token': sessionToken
         },
       }),
 
       transformResponse: (
         response: {
-          objectId:string,
-          firstname:string,
-          lastname:string,
-          username:string,
-          email:string 
-          createdAt:string, 
-          sessionToken:string
-        }) => {
-          const result = {
-            id:response.objectId,
-            firstname:response.firstname,
-            lastname:response.lastname,
-            username:response.username,
-            email:response.email,
-            createdAt:response.createdAt,
-            sessionToken:response.sessionToken
+          result:{
+            id:string,
+            firstname:string,
+            lastname:string,
+            username:string,
+            email:string 
+            createdAt:string, 
+            sessionToken:string
           }
-          
-        return result;
+  
+        }) => {          
+        return response.result;
       },
     }),
   }),

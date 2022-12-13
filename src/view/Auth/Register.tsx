@@ -1,10 +1,10 @@
 import React from 'react';
-import { useAuth } from '../../util/hook/useAuth';
+import { useAuth } from '../../features/hook/useAuth';
 import {
   AiOutlineArrowLeft,
   AiOutlineArrowRight,
 } from 'react-icons/ai';
-import { AUTH_OBJECT } from '../../util/constant/auth';
+import { AUTH_OBJECT } from '../../features/constant/auth';
 import { CustomInput, Button, Typography } from '../../components';
 
 import styles from './Auth.module.scss';
