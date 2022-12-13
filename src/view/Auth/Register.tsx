@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '../../features/hook/useAuth';
+import { useAuth } from '../../features/hook/user/useAuth';
 import {
   AiOutlineArrowLeft,
   AiOutlineArrowRight,

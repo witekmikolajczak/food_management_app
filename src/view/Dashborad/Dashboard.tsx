@@ -9,42 +9,42 @@ import {
   Layout,
   Typography,
   Table,
+  Loading
 } from '../../components';
+
+import { useProduct } from '../../features/hook/product/useProduct';
 
 import styles from './Dashboard.module.scss';
 import { productCollection } from '../../features/constant/productCollection';
 import { LATEST_RECIPT, LATEST_RECIPT_TABLE_HEADERS } from '../../features/constant/latestRecipt';
-
-// export const renderReciptCollectionTable = (): JSX.Element[] => {
-//   const renderReciptCollection = LATEST_RECIPT.map(
-//     (recipt, index) => {
-//       return (
-//         <tr onClick={() => console.log('clicked')}>
-//           <td>{index}.</td>
-//           <td>{recipt.name}</td>
-//           <td>{recipt.viewed}</td>
-//           <td>{recipt.link}</td>
-//         </tr>
-//       );
-//     }
-//   );
-//   return renderReciptCollection;
-// };
-
-function renderPorudctCollection(){
-  const collection = productCollection.map((product, index)=>{
-    return (
-      <div key={index} className={styles.product}>
-        <p>{product.name}</p>
-        <p>{product.count}</p>
-        <p>{product.unit}</p>
-      </div>
-    )
-  })
-  return collection
-}
+import { useEffect, useState } from 'react';
+import { useAppDispatch } from '../../features/redux/hook';
+import { changeIsLoadingStatus } from '../../features/redux/reducer/loading';
 
 export const Dashboard = () => {
+  const dispatch = useAppDispatch()
+  const {
+    productData,
+    productIsError,
+    productIsLoading,
+    productIsSuccess,
+  } = useProduct()
+  
+  function renderProductCollection(){   
+    if(productData!==undefined && productIsSuccess){
+      const collection = productData.map((product, index)=>{        
+        return (
+          <div key={index} className={styles.product}>
+            <p>{product.productName}</p>
+            <p>{product.productCount}</p>
+            <p>{product.productUnit}</p>
+          </div>
+        )
+      })
+      return collection
+    }
+  }
+  
   return (
     <div className={styles.wrapper}>
       <Layout />
@@ -76,23 +76,27 @@ export const Dashboard = () => {
         <div className={styles.row}>
           <div className={styles['section2']}>
             <Card
+              isError={productIsError}
+              isLoading={productIsLoading}
               icon={<IoDocumentTextOutline size={50} />}
               text="Ostatnio dodane produkty"
               wrapperClassName={styles.wrapperClassName}
               contentClassName={styles.contentClassName}
             >
               <div className={styles['last-added-products']}>
-                  {renderPorudctCollection()}
+                  {renderProductCollection()}
               </div>
             </Card>
             <Card
+              isError={productIsError}
+              isLoading={productIsLoading}
               icon={<IoDocumentTextOutline size={50} />}
               text="Kończące się produkty"
               wrapperClassName={styles.wrapperClassName}
               contentClassName={styles.contentClassName}
             >
               <div className={styles['last-products']}>
-                  {renderPorudctCollection()}
+                  {renderProductCollection()}
               </div>
             </Card>
           </div>

@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useLoginMutation, useRegisterMutation } from '../redux/api/auth';
-import { useUserFullDataMutation } from '../redux/api/user';
-import { useAppDispatch } from '../redux/hook';
-import { loadAuthData } from '../redux/reducer/auth';
-import { AUTH_OBJECT } from '../constant/auth';
-import { useAppSelector } from '../redux/hook';
+import { useLoginMutation, useRegisterMutation } from '../../redux/api/auth';
+import { useUserFullDataMutation } from '../../redux/api/user';
+import { AUTH_OBJECT } from '../../constant/auth';
 import { useNavigate } from 'react-router-dom';
+
+//redux
+import { useAppSelector } from '../../redux/hook';
+import { useAppDispatch } from '../../redux/hook';
+import { loadAuthData } from '../../redux/reducer/auth';
+import { changeIsLoadingStatus } from '../../redux/reducer/loading';
 
 export const useAuth = () => {
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
   const [values, setValues] = useState<Array<AuthInterface>>(AUTH_OBJECT);
   const [step, setStep] = useState<number>(0);
   const state = useAppSelector((state)=>state.auth)
@@ -19,7 +23,7 @@ export const useAuth = () => {
       data: loginResult,
       isError: loginIsError,
       error: loginError,
-      isLoading: loginLoading,
+      isLoading: loginIsLoading,
       isSuccess: loginSuccess
     }
   ] = useLoginMutation()
@@ -42,8 +46,6 @@ export const useAuth = () => {
     isSuccess: userDataIsSuccess
   }
 ] = useUserFullDataMutation()
-  const dispatch = useAppDispatch()
-
   function handleValuesChange(
     event:React.ChangeEvent<HTMLInputElement>
   ):void {        
@@ -76,6 +78,7 @@ export const useAuth = () => {
     const username = values.filter((value)=>value.name === 'login')[0].value;
     const password = values.filter((value)=>value.name === 'password')[0].value;
     await login({username, password})    
+    dispatch(changeIsLoadingStatus({isLoading:true}))
   }
 
   async function handleRegister(){
@@ -91,10 +94,10 @@ export const useAuth = () => {
       username,
       password,
       email
-    })    
+    })   
   }
 
-  useEffect(()=>{
+  useEffect(()=>{    
     if(
       loginResult && 
       loginSuccess && 

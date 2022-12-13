@@ -9,7 +9,7 @@ interface ProductCreateInterface {
 }
 
 
-export const authApi = createApi({
+export const productApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `${VITE_APP_REST_API_URL}/parse/functions`,
   }),
@@ -27,9 +27,24 @@ export const authApi = createApi({
           productCollection:data.body
         }
       }),
-
     }),
+
+    productCollection: build.mutation({
+      query: (sessionToken:string)=>({
+        url:'/productCollection',
+        method:'POST',
+        headers: {
+          'X-Parse-Application-Id': VITE_APP_PARSE_APP_ID,
+          'X-Parse-Session-Token': sessionToken
+       },
+      }),
+      transformResponse: (
+        response:{result:ProductInterface[]}
+        )=> {          
+        return response.result; 
+      }
+    })
   }),
 });
 
-export const { useCreateProductMutation } = authApi;
+export const { useCreateProductMutation, useProductCollectionMutation } = productApi;

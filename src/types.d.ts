@@ -14,6 +14,7 @@ global {
     icon: JSX.Element;
   }
   interface ProductInterface {
+    id?:string
     productType: string;
     productUnit: string;
     productName: string;

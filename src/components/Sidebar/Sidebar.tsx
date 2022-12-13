@@ -30,9 +30,7 @@ export const Sidebar = ({
     if(event.currentTarget.id === 'Wyloguj'){
       await logout(sessionToken)
     }
-  }
-  console.log(logoutData, isErrorLogout, isSuccessLogout, isLoadingLogout);
-  
+  }  
 
   useEffect(()=>{
     if(

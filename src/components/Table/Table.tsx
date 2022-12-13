@@ -38,10 +38,7 @@ export const Table = ({
   function handleTheadCollection():JSX.Element[]{    
     const collection:JSX.Element[] = Object.values(tHeadCollection).map((value:any,index:number)=>{      
       return <td key={index}>{value}</td>
-    })
-    // console.log('HERE');
-    // console.log(collection);
-    
+    })  
     
     return collection
   }

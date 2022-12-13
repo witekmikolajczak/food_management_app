@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '../../features/hook/useAuth';
+import { useAuth } from '../../features/hook/user/useAuth';
 import { Button } from '../../components';
 import { AUTH_OBJECT } from '../../features/constant/auth';
 import { CustomInput } from '../../components';

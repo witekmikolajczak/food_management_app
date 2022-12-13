@@ -14,7 +14,7 @@ import {
   Table,
 } from '../../components';
 import styles from './AddProduct.module.scss';
-import { useAddProduct } from '../../features/hook/useAddProduct';
+import { useAddProduct } from '../../features/hook/product/useAddProduct';
 
 // ----------render table---------
 const TABLE_HEADERS = {
