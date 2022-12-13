@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { CustomNavLink } from './CustomNavLink';
 
 import { withRouter } from 'storybook-addon-react-router-v6';
-import { SIDEBAR_LINKS_COLLECTION } from '../../util/constant/links';
+import { SIDEBAR_LINKS_COLLECTION } from '../../features/constant/links';
 
 export default {
   title: 'Components/NavLink',

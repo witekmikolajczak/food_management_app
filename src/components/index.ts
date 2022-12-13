@@ -12,6 +12,8 @@ import { Table } from './Table/Table';
 import { SearchBar } from './Pagination/SearchBar/SearchBar';
 import { CustomInput } from './Input/CustomInput';
 import { Select } from './Select/Select';
+import { Loading } from './Loading/Loading';
+
 
 export {
   Button,
@@ -28,4 +30,5 @@ export {
   SearchBar,
   CustomInput,
   Select,
+  Loading
 };

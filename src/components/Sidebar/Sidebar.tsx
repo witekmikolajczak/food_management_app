@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
-import { useLogoutMutation } from '../../util/redux/api/auth';
-import { useAppDispatch, useAppSelector } from '../../util/redux/hook';
-import { loadAuthData } from '../../util/redux/reducer/auth';
+import { useLogoutMutation } from '../../features/redux/api/auth';
+import { useAppDispatch, useAppSelector } from '../../features/redux/hook';
+import { loadAuthData } from '../../features/redux/reducer/auth';
 
 import { CustomNavLink } from '../Navlink/CustomNavLink';
 import styles from './Sidebar.module.scss';
@@ -30,9 +30,7 @@ export const Sidebar = ({
     if(event.currentTarget.id === 'Wyloguj'){
       await logout(sessionToken)
     }
-  }
-  console.log(logoutData, isErrorLogout, isSuccessLogout, isLoadingLogout);
-  
+  }  
 
   useEffect(()=>{
     if(

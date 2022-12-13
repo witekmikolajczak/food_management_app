@@ -38,9 +38,15 @@ export const SIDEBAR_LINKS_COLLECTION = [
     path: 'recipt-list',
     icon: <AiOutlineOrderedList size={20} />,
   },
-
   {
     id: '5',
+    name: 'Lista produktów',
+    path: 'recipt-list',
+    icon: <AiOutlineOrderedList size={20} />,
+  },
+
+  {
+    id: '6',
     name: 'Wyloguj',
     path: 'auth',
     icon: <CiLogout size={20} />,

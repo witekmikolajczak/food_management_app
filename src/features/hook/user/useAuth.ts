@@ -1,25 +1,29 @@
 import { useEffect, useState } from 'react';
-import { useLoginMutation, useRegisterMutation } from '../redux/api/auth';
-import { useUserFullDataMutation } from '../redux/api/user';
-import { useAppDispatch } from '../redux/hook';
-import { loadAuthData } from '../redux/reducer/auth';
-import { AUTH_OBJECT } from '../constant/auth';
-import { useAppSelector } from '../redux/hook';
+import { useLoginMutation, useRegisterMutation } from '../../redux/api/auth';
+import { useUserFullDataMutation } from '../../redux/api/user';
+import { AUTH_OBJECT } from '../../constant/auth';
 import { useNavigate } from 'react-router-dom';
+
+//redux
+import { useAppSelector } from '../../redux/hook';
+import { useAppDispatch } from '../../redux/hook';
+import { loadAuthData } from '../../redux/reducer/auth';
+import { changeIsLoadingStatus } from '../../redux/reducer/loading';
 
 export const useAuth = () => {
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
   const [values, setValues] = useState<Array<AuthInterface>>(AUTH_OBJECT);
   const [step, setStep] = useState<number>(0);
   const state = useAppSelector((state)=>state.auth)
-  console.log(state);
 
   const [
     login, 
     {
       data: loginResult,
-      isError: loginError,
-      isLoading: loginLoading,
+      isError: loginIsError,
+      error: loginError,
+      isLoading: loginIsLoading,
       isSuccess: loginSuccess
     }
   ] = useLoginMutation()
@@ -37,10 +41,11 @@ export const useAuth = () => {
     userFullData,
     {
     data: userData,
+    isError: userDataIsError,
+    isLoading: userDataIsLoading,
+    isSuccess: userDataIsSuccess
   }
 ] = useUserFullDataMutation()
-  const dispatch = useAppDispatch()
-
   function handleValuesChange(
     event:React.ChangeEvent<HTMLInputElement>
   ):void {        
@@ -72,9 +77,8 @@ export const useAuth = () => {
   async function handleLogin(){
     const username = values.filter((value)=>value.name === 'login')[0].value;
     const password = values.filter((value)=>value.name === 'password')[0].value;
-
-    await login({username, password})
-    navigate('/dashboard')
+    await login({username, password})    
+    dispatch(changeIsLoadingStatus({isLoading:true}))
   }
 
   async function handleRegister(){
@@ -84,33 +88,51 @@ export const useAuth = () => {
     const password = values.filter((value)=>value.name === 'password')[0].value;
     const email = values.filter((value)=>value.name === 'email')[0].value;
 
-    const response = await register({
+    await register({
       firstname,
       lastname,
       username,
       password,
       email
-    })
-    // await userFullData({response.sessionToken}) 
+    })   
   }
 
-  useEffect(()=>{
+  useEffect(()=>{    
     if(
       loginResult && 
       loginSuccess && 
-      !loginError
-    ) dispatch(loadAuthData({...loginResult, isAuthenticated:true}))
+      !loginIsError
+    ){
+      dispatch(loadAuthData({...loginResult, isAuthenticated:true}))
+      navigate('/dashboard')
+    }
+    if(loginIsError){
+      alert('Invalid username/password')
+    }
     
   },[loginResult, loginSuccess, loginError])
-
+  
   useEffect(()=>{
-    // if(
-    //   registerResult && 
-    //   registerSuccess && 
-    //   !registerError
-    // ) dispatch(loadAuthData(registerResult))
+    if(
+      registerResult && 
+      registerSuccess && 
+      !registerError
+    ){
+      userFullData(registerResult.sessionToken)
+    }
   },[registerResult, registerSuccess, registerError])
 
+  useEffect(()=>{
+    if(
+      userData && 
+      userDataIsSuccess && 
+      !userDataIsError
+    ){
+      dispatch(loadAuthData(userData))  
+      navigate('/dashboard')
+    }
+    
+  },[userData, userDataIsError, userDataIsLoading, userDataIsSuccess])
   return {
     step,
     handleClickBack,

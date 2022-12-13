@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Product } from './Product';
 
-import { productCollection } from '../../util/constant/productCollection';
+import { productCollection } from '../../features/constant/productCollection';
 
 export default {
   title: 'Components/Product',

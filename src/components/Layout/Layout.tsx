@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { SIDEBAR_LINKS_COLLECTION } from '../../util/constant/links';
+import { SIDEBAR_LINKS_COLLECTION } from '../../features/constant/links';
 import { Sidebar } from '../Sidebar/Sidebar';
 import styles from './Layout.module.scss';
 export const Layout = () => {

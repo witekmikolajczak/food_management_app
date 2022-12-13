@@ -6,18 +6,18 @@ import styles from './Table.module.scss';
 
 interface TableProps {
   icon: JSX.Element;
-  tHeadCollection: JSX.Element[] | JSX.Element;
-  tBodyCollection: JSX.Element[] | JSX.Element;
-  tFootCollection?: JSX.Element[] | JSX.Element;
+  tHeadCollection: any;
+  tBodyCollection: any[];
+  tFootCollection?: any[];
   text: string;
-  fnHandleClick: (recipt: RecentlyViewedRecipt) => void;
+  // fnHandleClick: () => void;
   className?: string;
   showFooter?: boolean;
 
   showButton?: boolean;
   buttonText?: string;
   buttonType?: 'primary' | 'secondary';
-  fnHandleButtonClick?: () => void;
+  fnHandleButtonClick: () => void;
 }
 
 export const Table = ({
@@ -32,8 +32,33 @@ export const Table = ({
   buttonText,
   buttonType,
   fnHandleButtonClick,
-  fnHandleClick,
+  // fnHandleClick,
 }: TableProps) => {
+
+  function handleTheadCollection():JSX.Element[]{    
+    const collection:JSX.Element[] = Object.values(tHeadCollection).map((value:any,index:number)=>{      
+      return <td key={index}>{value}</td>
+    })  
+    
+    return collection
+  }
+
+  function handleTbodyCollection():JSX.Element[]{
+    const arrayTr:any[] = []
+    tBodyCollection.map((value,mapIndex)=>{
+      const arrayTd:JSX.Element[]=[]
+      Object.entries(value).map(([key,value]:any, index)=>{  
+        arrayTd.push(<td key={key}>{value}</td>)
+      })  
+      arrayTr.push(arrayTd)
+
+    })    
+    const collection: JSX.Element[] = arrayTr.map((tr, trKey)=>{
+      return <tr key={trKey}>{tr}</tr>
+    })    
+    return collection
+  }
+
   return (
     <Card
       wrapperClassName={`${styles.wrapperClassName} ${className}`}
@@ -42,8 +67,16 @@ export const Table = ({
     >
       <div className={styles.wrapper}>
         <table className={styles.table}>
-          <thead>{tHeadCollection}</thead>
-          <tbody>{tBodyCollection}</tbody>
+          <thead>
+            <tr>
+              {handleTheadCollection()}
+            </tr>
+          </thead>
+          <tbody>
+            
+              {handleTbodyCollection()}
+            
+          </tbody>
           {showFooter && <tfoot>{tFootCollection}</tfoot>}
         </table>
       </div>
@@ -52,7 +85,7 @@ export const Table = ({
           <div className={styles['under-table']}>
             <Button
               text={buttonText!}
-              fnHandleClick={() => fnHandleButtonClick}
+              fnHandleClick={fnHandleButtonClick}
               type={buttonType!}
             />
           </div>

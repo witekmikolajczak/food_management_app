@@ -24,3 +24,11 @@ export const LATEST_RECIPT = [
     viewed: '24-11-2022',
   },
 ];
+
+
+export const LATEST_RECIPT_TABLE_HEADERS = {
+  positionNumber: 'Nr.',
+  name: 'Nazwa',
+  latest_viewd: 'Ostatnio przeglądane',
+  uri: 'Link',
+}

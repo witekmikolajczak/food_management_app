@@ -14,11 +14,11 @@ global {
     icon: JSX.Element;
   }
   interface ProductInterface {
-    id: string;
-    name: string;
-    src: string;
-    unit: string;
-    count: string;
+    id?:string
+    productType: string;
+    productUnit: string;
+    productName: string;
+    productCount: string;
   }
   interface RecentlyViewedRecipt {
     id: string;
@@ -29,7 +29,9 @@ global {
 
   interface UnitInterface {
     type: string;
-    units: string[];
+    units:{
+      description:string
+    }[]
     description: string;
   }
 }

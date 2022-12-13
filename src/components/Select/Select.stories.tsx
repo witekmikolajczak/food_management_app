@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { withRouter } from 'storybook-addon-react-router-v6';
 
 import { Select } from './Select';
-import { productUnitCollection } from '../../util/constant/productOptionCollection';
+import { productUnitCollection } from '../../features/constant/productOptionCollection';
 
 export default {
   title: 'Components/Select',
@@ -18,6 +18,5 @@ export const SelectStory = Template.bind({});
 SelectStory.args = {
   label: true,
   labelText: 'labelText',
-  children: <div></div>,
   fnHandleSelectChange: () => console.log('select changed'),
 };

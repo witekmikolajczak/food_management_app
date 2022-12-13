@@ -20,4 +20,18 @@ export const productCollection = [
     unit: 'g',
     count: '400',
   },
+  {
+    id: '2',
+    name: 'Cukier',
+    src: 'https://driveimg1.intermarche.com/pl/Content/images/boitmal/produit/zoom/396ED663CFCFFF6EBEF35285FC39F7DF.jpg',
+    unit: 'g',
+    count: '400',
+  },
+  {
+    id: '2',
+    name: 'Cukier',
+    src: 'https://driveimg1.intermarche.com/pl/Content/images/boitmal/produit/zoom/396ED663CFCFFF6EBEF35285FC39F7DF.jpg',
+    unit: 'g',
+    count: '400',
+  },
 ];

@@ -5,7 +5,13 @@ import { Card } from '../Card/Card';
 import styles from './Product.module.scss';
 
 interface ProductProps {
-  productCollection: ProductInterface[];
+  productCollection: {
+    id: string;
+    name: string;
+    src: string;
+    unit: string;
+    count: string;
+  }[]
 }
 export const Product = ({
   productCollection,
