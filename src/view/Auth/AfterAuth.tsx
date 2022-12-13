@@ -7,7 +7,6 @@ export const AfterAuth = () => {
    const isLoading = useAppSelector((state)=>state.loading.isLoading)
    useEffect(()=>{
       console.log(isLoading);
-      
    },[isLoading])
   return (
    <Loading/>

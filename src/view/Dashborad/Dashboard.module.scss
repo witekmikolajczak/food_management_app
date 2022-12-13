@@ -59,6 +59,9 @@
           justify-content: space-evenly;
           height: 100px;
           align-items: center;
+          &:hover{
+            opacity: 0.5;
+          }
         }
       }
     }
