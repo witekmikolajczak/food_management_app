@@ -10,14 +10,16 @@ interface TableProps {
   tBodyCollection: any[];
   tFootCollection?: any[];
   text: string;
-  // fnHandleClick: () => void;
   className?: string;
   showFooter?: boolean;
 
   showButton?: boolean;
   buttonText?: string;
   buttonType?: "primary" | "secondary";
+  isError?:boolean;
+  isLoading?:boolean
   fnHandleButtonClick: () => void;
+  fnHandleRecordClick: (e:React.MouseEvent<HTMLTableRowElement, MouseEvent>) => void;
 }
 
 export const Table = ({
@@ -31,8 +33,11 @@ export const Table = ({
   showButton,
   buttonText,
   buttonType,
+  isError,
+  isLoading,
   fnHandleButtonClick,
-}: // fnHandleClick,
+  fnHandleRecordClick
+}: 
 TableProps) => {
   function handleTheadCollection(): JSX.Element[] {
     const collection: JSX.Element[] = Object.values(tHeadCollection).map(
@@ -54,13 +59,15 @@ TableProps) => {
       arrayTr.push(arrayTd);
     });
     const collection: JSX.Element[] = arrayTr.map((tr, trKey) => {
-      return <tr key={trKey}>{tr}</tr>;
+      return <tr onClick={(value)=>fnHandleRecordClick(value)}  key={trKey}>{tr}</tr>;
     });
     return collection;
   }
 
   return (
     <Card
+      isError={isError}
+      isLoading={isLoading}
       wrapperClassName={`${styles.wrapperClassName} ${className}`}
       icon={icon}
       text={text}

@@ -12,7 +12,7 @@ import {
   Loading,
 } from "../../components";
 
-import { useProduct } from "../../features/hook/product/useProduct";
+import { useFetchProduct } from "../../features/hook/product/useFetchProduct";
 
 import styles from "./Dashboard.module.scss";
 import {
@@ -27,7 +27,7 @@ export const Dashboard = () => {
   const dispatch = useAppDispatch();
   const productCollection = useAppSelector((state) => state.product);
   const { productData, productIsError, productIsLoading, productIsSuccess } =
-    useProduct();
+    useFetchProduct();
 
   function renderProductCollection() {
     if (productCollection !== undefined && productIsSuccess) {

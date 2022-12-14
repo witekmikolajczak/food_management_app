@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useProductCollectionMutation } from "../../redux/api/product";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { loadProductCollection } from "../../redux/reducer/product";
-export const useProduct = () => {
+export const useFetchProduct = () => {
   const sessionToken = useAppSelector((state) => state.auth.sessionToken);
   const productArray = useAppSelector((state) => state.product);
 
@@ -16,6 +16,10 @@ export const useProduct = () => {
       data: productData,
     },
   ] = useProductCollectionMutation();
+
+  function fetchProductCollection(){
+    productCollection(sessionToken);
+  }
   useEffect(() => {
     productCollection(sessionToken);
   }, []);
@@ -31,5 +35,6 @@ export const useProduct = () => {
     productIsError,
     productIsLoading,
     productIsSuccess,
+    fetchProductCollection
   };
 };
