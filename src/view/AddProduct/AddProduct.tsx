@@ -1,10 +1,10 @@
-import React from 'react';
-import { CSSTransition } from 'react-transition-group';
-import { MdProductionQuantityLimits } from 'react-icons/md';
-import { IoFastFoodOutline } from 'react-icons/io5';
-import { AiOutlineDelete } from 'react-icons/ai';
+import React from "react";
+import { CSSTransition } from "react-transition-group";
+import { MdProductionQuantityLimits } from "react-icons/md";
+import { IoFastFoodOutline } from "react-icons/io5";
+import { AiOutlineDelete } from "react-icons/ai";
 
-import { productUnitCollection } from '../../features/constant/productOptionCollection';
+import { productUnitCollection } from "../../features/constant/productOptionCollection";
 import {
   Layout,
   Card,
@@ -12,36 +12,36 @@ import {
   CustomInput,
   Select,
   Table,
-} from '../../components';
-import styles from './AddProduct.module.scss';
-import { useAddProduct } from '../../features/hook/product/useAddProduct';
+} from "../../components";
+import styles from "./AddProduct.module.scss";
+import { useAddProduct } from "../../features/hook/product/useAddProduct";
 
 // ----------render table---------
 const TABLE_HEADERS = {
-  positionName: 'Nr.',
-  name: 'Nazwa',
-  count: 'Ilość',
-  type: 'Jednostka',
-  delete: 'Usuń',
+  positionName: "Nr.",
+  name: "Nazwa",
+  count: "Ilość",
+  type: "Jednostka",
+  delete: "Usuń",
 };
 
 export const AddProduct = (): JSX.Element => {
   const {
-    products, 
-    productName, 
+    products,
+    productName,
     unitCollection,
     productCount,
     selectedProductUnit,
-    
+
     setProductCount,
-    setProducts, 
-    setProductName, 
+    setProducts,
+    setProductName,
     setSelectedProductUnit,
-    
-    handleDeleteFromTable, 
-    handleProductType, 
-    handleSendProduct
-  } = useAddProduct()
+
+    handleDeleteFromTable,
+    handleProductType,
+    handleSendProduct,
+  } = useAddProduct();
   // useEffect(() => {
   //   if (products.length > 0) {
   //     setShowTable(true);
@@ -49,101 +49,98 @@ export const AddProduct = (): JSX.Element => {
   //     setShowTable(false);
   //   }
   // }, [products]);
-  
+
   function handleAddProduct(
     productId: string,
     productName: string,
     productCount: string,
     productUnit: string
- ){
-    if (productName && productCount && productUnit){
-      setProducts(
-       [
+  ) {
+    if (productName && productCount && productUnit) {
+      setProducts([
         ...products,
         {
           productId: productId,
           productName: productName,
           productCount: productCount,
           productUnit: productUnit,
-          delete: <AiOutlineDelete onClick={() => handleDeleteFromTable(productId)} size={25}/>
-        }
-       ]
-      );
+          delete: (
+            <AiOutlineDelete
+              onClick={() => handleDeleteFromTable(productId)}
+              size={25}
+            />
+          ),
+        },
+      ]);
     }
- }
+  }
   return (
     <div className={styles.wrapper}>
-      <Layout />
-      <div className={styles.add}>
-        <Card
-          icon={<MdProductionQuantityLimits size={25} />}
-          text="Dodaj produkt"
-          wrapperClassName={styles.wrapperClassName}
-        >
-          <div className={styles['card-content']}>
-            <div className={styles['product-name']}>
-              <CustomInput
-                label={true}
-                labelText="Dodaj nowy produkt"
-                placeholder="Nazwa produktu"
-                name="product-name"
-                value={productName}
-                fnHandleChange={(e) =>
-                  setProductName(e.currentTarget.value)
-                }
-              />
-            </div>
-            <div className={styles['product-type']}>
-              <Select
-                optionCollection={productUnitCollection}
-                label={true}
-                labelText="Typ produktu"
-                fnHandleSelectChange={(e) => handleProductType(e)}
-              />
-              
-            </div>
-            <div className={styles['product-unit']}>
-              <Select
-                optionCollection={unitCollection}
-                label={true}
-                labelText="Jednostka produktu"
-                fnHandleSelectChange={(e) =>
-                  setSelectedProductUnit(e.currentTarget.value)
-                }
-              />
-              
-            </div>
-            <div className={styles['product-count']}>
-              <CustomInput
-                label={true}
-                labelText="Ilość"
-                placeholder="np. 10"
-                name="product-count"
-                value={productCount}
-                fnHandleChange={(e) =>
-                  setProductCount(e.currentTarget.value)
-                }
-              />
-            </div>
+      <Layout>
+        <div className={styles.add}>
+          <Card
+            icon={<MdProductionQuantityLimits size={25} />}
+            text="Dodaj produkt"
+            wrapperClassName={styles.wrapperClassName}
+          >
+            <div className={styles["card-content"]}>
+              <div className={styles["product-name"]}>
+                <CustomInput
+                  label={true}
+                  labelText="Dodaj nowy produkt"
+                  placeholder="Nazwa produktu"
+                  name="product-name"
+                  value={productName}
+                  fnHandleChange={(e) => setProductName(e.currentTarget.value)}
+                />
+              </div>
+              <div className={styles["product-type"]}>
+                <Select
+                  optionCollection={productUnitCollection}
+                  label={true}
+                  labelText="Typ produktu"
+                  fnHandleSelectChange={(e) => handleProductType(e)}
+                />
+              </div>
+              <div className={styles["product-unit"]}>
+                <Select
+                  optionCollection={unitCollection}
+                  label={true}
+                  labelText="Jednostka produktu"
+                  fnHandleSelectChange={(e) =>
+                    setSelectedProductUnit(e.currentTarget.value)
+                  }
+                />
+              </div>
+              <div className={styles["product-count"]}>
+                <CustomInput
+                  label={true}
+                  labelText="Ilość"
+                  placeholder="np. 10"
+                  name="product-count"
+                  value={productCount}
+                  fnHandleChange={(e) => setProductCount(e.currentTarget.value)}
+                />
+              </div>
 
-            <div className={styles['button-container']}>
-              <Button
-                type="primary"
-                text="Dodaj"
-                fnHandleClick={() =>
-                  handleAddProduct(
-                    Math.random().toString(),
-                    productName,
-                    productCount,
-                    selectedProductUnit
-                  )
-                }
-              />
+              <div className={styles["button-container"]}>
+                <Button
+                  type="primary"
+                  text="Dodaj"
+                  fnHandleClick={() =>
+                    handleAddProduct(
+                      Math.random().toString(),
+                      productName,
+                      productCount,
+                      selectedProductUnit
+                    )
+                  }
+                />
+              </div>
             </div>
-          </div>
-        </Card>
+          </Card>
 
-        <div className={styles.table}>
+          <div className={styles.table}>
             <Table
               className={styles.MyClass}
               tHeadCollection={TABLE_HEADERS}
@@ -155,7 +152,7 @@ export const AddProduct = (): JSX.Element => {
               buttonText="Wyślij"
               buttonType="primary"
             />
-          {/* <CSSTransition
+            {/* <CSSTransition
             in={showTable}
             // nodeRef={nodeRef}
             timeout={300}
@@ -172,8 +169,9 @@ export const AddProduct = (): JSX.Element => {
           >
 
           </CSSTransition> */}
+          </div>
         </div>
-      </div>
+      </Layout>
     </div>
   );
 };

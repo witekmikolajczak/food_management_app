@@ -1,4 +1,8 @@
-.content {
-  background-color: black;
+.wrapper {
   display: flex;
+  width: 100%;
+  .content {
+    padding: 4rem;
+    width: 100%;
+  }
 }

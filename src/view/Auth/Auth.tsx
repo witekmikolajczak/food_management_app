@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
-import { useRegisterMutation, useLoginMutation } from '../../features/redux/api/auth';
+import React, { useState } from "react";
+import {
+  useRegisterMutation,
+  useLoginMutation,
+} from "../../features/redux/api/auth";
 
-import { AiOutlineLogin, AiOutlineLogout } from 'react-icons/ai';
-import { Login } from './Login';
-import { Register } from './Register';
-import { Typography, Card } from '../../components';
+import { AiOutlineLogin, AiOutlineLogout } from "react-icons/ai";
+import { Login } from "./Login";
+import { Register } from "./Register";
+import { Typography, Card } from "../../components";
 
-import styles from './Auth.module.scss';
+import styles from "./Auth.module.scss";
 
 export const Auth = (): JSX.Element => {
   const [isRegistered, setIsRegistered] = useState<boolean>(true);
@@ -16,12 +19,10 @@ export const Auth = (): JSX.Element => {
   ) : (
     <Register />
   );
-  const authText: string = isRegistered
-    ? 'Zaloguj się!'
-    : 'Zarejestruj się!';
+  const authText: string = isRegistered ? "Zaloguj się!" : "Zarejestruj się!";
   const haveAccount: string = isRegistered
-    ? 'Nie masz konta?'
-    : 'Masz już konto?';
+    ? "Nie masz konta?"
+    : "Masz już konto?";
 
   return (
     <div className={styles.wrapper}>
@@ -39,7 +40,7 @@ export const Auth = (): JSX.Element => {
       >
         {renderAuthElement}
         <Typography
-          className={styles['have-account']}
+          className={styles["have-account"]}
           variant="p"
           text={haveAccount}
           fnHandleClick={() => setIsRegistered(!isRegistered)}

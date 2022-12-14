@@ -1,22 +1,20 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { withRouter } from 'storybook-addon-react-router-v6';
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { withRouter } from "storybook-addon-react-router-v6";
 
-import { Select } from './Select';
-import { productUnitCollection } from '../../features/constant/productOptionCollection';
+import { Select } from "./Select";
+import { productUnitCollection } from "../../features/constant/productOptionCollection";
 
 export default {
-  title: 'Components/Select',
+  title: "Components/Select",
   component: Select,
   decorators: [withRouter],
 } as ComponentMeta<typeof Select>;
 
-const Template: ComponentStory<typeof Select> = (args) => (
-  <Select {...args} />
-);
+const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;
 
 export const SelectStory = Template.bind({});
 SelectStory.args = {
   label: true,
-  labelText: 'labelText',
-  fnHandleSelectChange: () => console.log('select changed'),
+  labelText: "labelText",
+  fnHandleSelectChange: () => console.log("select changed"),
 };

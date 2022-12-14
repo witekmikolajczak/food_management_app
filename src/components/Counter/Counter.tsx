@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import { Typography } from '../Typography/Typography';
+import { Typography } from "../Typography/Typography";
 
 interface CounterInterface {
   min: number;

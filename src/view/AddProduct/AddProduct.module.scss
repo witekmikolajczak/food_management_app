@@ -3,15 +3,12 @@
   background-color: #eee;
   min-height: 100vh;
   .add {
-    padding: 3rem;
     width: 100%;
     .wrapperClassName {
       width: 400px;
     }
-
     .card-content {
       padding: 1rem;
-
       .product-type {
         margin-top: 2rem;
       }
@@ -32,9 +29,8 @@
     }
 
     .table {
-      // padding: 1rem;
       margin-top: 5rem;
-      width: 100%;
+      width: auto;
     }
     .delete {
       width: 50px;

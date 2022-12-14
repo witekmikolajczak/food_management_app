@@ -1,5 +1,4 @@
 global {
-
   interface AuthInterface {
     id: string;
     name: string;
@@ -14,7 +13,7 @@ global {
     icon: JSX.Element;
   }
   interface ProductInterface {
-    id?:string
+    id?: string;
     productType: string;
     productUnit: string;
     productName: string;
@@ -29,9 +28,9 @@ global {
 
   interface UnitInterface {
     type: string;
-    units:{
-      description:string
-    }[]
+    units: {
+      description: string;
+    }[];
     description: string;
   }
 }

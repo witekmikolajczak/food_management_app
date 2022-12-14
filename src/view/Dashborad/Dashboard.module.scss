@@ -4,12 +4,9 @@
   .row {
     display: flex;
     width: 100%;
-    margin-top: 5rem;
   }
 
   .content {
-    padding-left: 2rem;
-    padding-right: 2rem;
     width: 100%;
 
     .row .product-count {
@@ -22,7 +19,7 @@
       width: 100%;
       display: flex;
       justify-content: space-around;
-      
+
       .wrapperClassName {
         width: 600px;
         height: 200px;
@@ -34,8 +31,9 @@
       }
     }
 
-    .section2{
+    .section2 {
       width: 100%;
+      margin-top: 5rem;
       display: flex;
       justify-content: space-around;
 
@@ -45,10 +43,10 @@
 
       .wrapperClassName:nth-child(2) {
         border: 1px solid var(--red);
-
       }
 
-      .last-added-products, .last-products{
+      .last-added-products,
+      .last-products {
         width: 700px;
         height: 400px;
         overflow-y: scroll;
@@ -59,16 +57,16 @@
           justify-content: space-evenly;
           height: 100px;
           align-items: center;
-          &:hover{
+          &:hover {
             opacity: 0.5;
           }
         }
       }
     }
 
-
     .last-recipts {
       width: 100%;
+      margin-top: 5rem;
       .table {
         height: 400px;
       }

@@ -1,0 +1,9 @@
+{
+  "overrides": [
+    {
+      "files": ["*.tsx", "*.scss"],
+      "semi": true,
+      "tabWidth": 150
+    }
+  ]
+}
