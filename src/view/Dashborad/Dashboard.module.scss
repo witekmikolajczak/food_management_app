@@ -1,75 +1,71 @@
-.wrapper {
+.row {
   display: flex;
-  background-color: #eee;
-  .row {
-    display: flex;
+  width: 100%;
+}
+
+.content {
+  width: 100%;
+
+  .row .product-count {
+    margin-right: 5rem;
+  }
+  .row .recipt-count {
+    margin-left: 5rem;
+  }
+  .counter-container {
     width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+    .wrapperClassName {
+      width: 600px;
+      height: 200px;
+      display: flex;
+    }
+    .contentClassName {
+      padding: 1rem;
+      align-self: center;
+    }
   }
 
-  .content {
+  .section2 {
     width: 100%;
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-around;
 
-    .row .product-count {
-      margin-right: 5rem;
+    .wrapperClassName:first-child {
+      border: 1px solid var(--green);
     }
-    .row .recipt-count {
-      margin-left: 5rem;
-    }
-    .counter-container {
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
 
-      .wrapperClassName {
-        width: 600px;
-        height: 200px;
+    .wrapperClassName:nth-child(2) {
+      border: 1px solid var(--red);
+    }
+
+    .last-added-products,
+    .last-products {
+      width: 700px;
+      height: 400px;
+      overflow-y: scroll;
+
+      .product {
         display: flex;
-      }
-      .contentClassName {
-        padding: 1rem;
-        align-self: center;
-      }
-    }
-
-    .section2 {
-      width: 100%;
-      margin-top: 5rem;
-      display: flex;
-      justify-content: space-around;
-
-      .wrapperClassName:first-child {
-        border: 1px solid var(--green);
-      }
-
-      .wrapperClassName:nth-child(2) {
-        border: 1px solid var(--red);
-      }
-
-      .last-added-products,
-      .last-products {
-        width: 700px;
-        height: 400px;
-        overflow-y: scroll;
-
-        .product {
-          display: flex;
-          width: 100%;
-          justify-content: space-evenly;
-          height: 100px;
-          align-items: center;
-          &:hover {
-            opacity: 0.5;
-          }
+        width: 100%;
+        justify-content: space-evenly;
+        height: 100px;
+        align-items: center;
+        &:hover {
+          opacity: 0.5;
         }
       }
     }
+  }
 
-    .last-recipts {
-      width: 100%;
-      margin-top: 5rem;
-      .table {
-        height: 400px;
-      }
+  .last-recipts {
+    width: 100%;
+    margin-top: 5rem;
+    .table {
+      height: 400px;
     }
   }
 }

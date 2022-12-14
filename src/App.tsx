@@ -3,10 +3,12 @@ import { PrivateRoutes } from "./components/ProtectedRoute/ProtectedRoute";
 
 import { AddProduct } from "./view/AddProduct/AddProduct";
 import { EditProduct } from "./view/EditProduct/EditProduct";
+import { EditDetailProduct } from "./view/EditProduct/EditDetailProduct";
 import { Auth } from "./view/Auth/Auth";
 import { AfterAuth } from "./view/Auth/AfterAuth";
 import { Dashboard } from "./view/Dashborad/Dashboard";
 import { Landing } from "./view/Landing/Landing";
+
 
 import { useAppSelector } from "./features/redux/hook";
 function App() {
@@ -20,7 +22,7 @@ function App() {
             <Route element={<Dashboard />} path="/dashboard" />
             <Route element={<AddProduct />} path="/add-product" />
             <Route element={<EditProduct />} path="/edit-product" />
-            <Route element={<EditProduct />} path="/edit-product/:id" />
+            <Route element={<EditDetailProduct />} path="/edit-product/:id" />
           </Route>
           <Route element={<Landing />} path="/" />
           <Route element={<Auth />} path="/auth" />

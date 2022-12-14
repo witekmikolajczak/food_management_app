@@ -75,103 +75,102 @@ export const AddProduct = (): JSX.Element => {
     }
   }
   return (
-    <div className={styles.wrapper}>
-      <Layout>
-        <div className={styles.add}>
-          <Card
-            icon={<MdProductionQuantityLimits size={25} />}
-            text="Dodaj produkt"
-            wrapperClassName={styles.wrapperClassName}
-          >
-            <div className={styles["card-content"]}>
-              <div className={styles["product-name"]}>
-                <CustomInput
-                  label={true}
-                  labelText="Dodaj nowy produkt"
-                  placeholder="Nazwa produktu"
-                  name="product-name"
-                  value={productName}
-                  fnHandleChange={(e) => setProductName(e.currentTarget.value)}
-                />
-              </div>
-              <div className={styles["product-type"]}>
-                <Select
-                  optionCollection={productUnitCollection}
-                  label={true}
-                  labelText="Typ produktu"
-                  fnHandleSelectChange={(e) => handleProductType(e)}
-                />
-              </div>
-              <div className={styles["product-unit"]}>
-                <Select
-                  optionCollection={unitCollection}
-                  label={true}
-                  labelText="Jednostka produktu"
-                  fnHandleSelectChange={(e) =>
-                    setSelectedProductUnit(e.currentTarget.value)
-                  }
-                />
-              </div>
-              <div className={styles["product-count"]}>
-                <CustomInput
-                  label={true}
-                  labelText="Ilość"
-                  placeholder="np. 10"
-                  name="product-count"
-                  value={productCount}
-                  fnHandleChange={(e) => setProductCount(e.currentTarget.value)}
-                />
-              </div>
-
-              <div className={styles["button-container"]}>
-                <Button
-                  type="primary"
-                  text="Dodaj"
-                  fnHandleClick={() =>
-                    handleAddProduct(
-                      Math.random().toString(),
-                      productName,
-                      productCount,
-                      selectedProductUnit
-                    )
-                  }
-                />
-              </div>
-            </div>
-          </Card>
-
-          <div className={styles.table}>
-            <Table
-              className={styles.MyClass}
-              tHeadCollection={TABLE_HEADERS}
-              tBodyCollection={products}
-              text="Dodane produkty"
-              icon={<IoFastFoodOutline size={25} />}
-              fnHandleButtonClick={handleSendProduct}
-              showButton={true}
-              buttonText="Wyślij"
-              buttonType="primary"
+    <Layout>
+      <div className={styles.add}>
+      <Card
+        icon={<MdProductionQuantityLimits size={25} />}
+        text="Dodaj produkt"
+        wrapperClassName={styles.wrapperClassName}
+      >
+        <div className={styles["card-content"]}>
+          <div className={styles["product-name"]}>
+            <CustomInput
+              label={true}
+              labelText="Dodaj nowy produkt"
+              placeholder="Nazwa produktu"
+              name="product-name"
+              value={productName}
+              fnHandleChange={(e) => setProductName(e.currentTarget.value)}
             />
-            {/* <CSSTransition
-            in={showTable}
-            // nodeRef={nodeRef}
-            timeout={300}
-            classNames={{
-              enter: styles.Enter,
-              enterActive: styles.MyClassEnterActive,
-              enterDone: styles.MyClassEnterDone,
-              exitActive: styles.MyClassExit,
-              exitDone: styles.MyClassExitActive,
-            }}
-            unmountOnExit
-            // onEnter={() => setShowButton(false)}
-            // onExited={() => setShowButton(true)}
-          >
+          </div>
+          <div className={styles["product-type"]}>
+            <Select
+              optionCollection={productUnitCollection}
+              label={true}
+              labelText="Typ produktu"
+              fnHandleSelectChange={(e) => handleProductType(e)}
+            />
+          </div>
+          <div className={styles["product-unit"]}>
+            <Select
+              optionCollection={unitCollection}
+              label={true}
+              labelText="Jednostka produktu"
+              fnHandleSelectChange={(e) =>
+                setSelectedProductUnit(e.currentTarget.value)
+              }
+            />
+          </div>
+          <div className={styles["product-count"]}>
+            <CustomInput
+              label={true}
+              labelText="Ilość"
+              placeholder="np. 10"
+              name="product-count"
+              value={productCount}
+              fnHandleChange={(e) => setProductCount(e.currentTarget.value)}
+            />
+          </div>
 
-          </CSSTransition> */}
+          <div className={styles["button-container"]}>
+            <Button
+              type="primary"
+              text="Dodaj"
+              fnHandleClick={() =>
+                handleAddProduct(
+                  Math.random().toString(),
+                  productName,
+                  productCount,
+                  selectedProductUnit
+                )
+              }
+            />
           </div>
         </div>
-      </Layout>
-    </div>
+      </Card>
+
+      <div className={styles.table}>
+        <Table
+          className={styles.MyClass}
+          tHeadCollection={TABLE_HEADERS}
+          tBodyCollection={products}
+          text="Dodane produkty"
+          icon={<IoFastFoodOutline size={25} />}
+          fnHandleButtonClick={handleSendProduct}
+          fnHandleRecordClick={(value)=>console.log(value)}
+          showButton={true}
+          buttonText="Wyślij"
+          buttonType="primary"
+        />
+        {/* <CSSTransition
+        in={showTable}
+        // nodeRef={nodeRef}
+        timeout={300}
+        classNames={{
+          enter: styles.Enter,
+          enterActive: styles.MyClassEnterActive,
+          enterDone: styles.MyClassEnterDone,
+          exitActive: styles.MyClassExit,
+          exitDone: styles.MyClassExitActive,
+        }}
+        unmountOnExit
+        // onEnter={() => setShowButton(false)}
+        // onExited={() => setShowButton(true)}
+      >
+
+      </CSSTransition> */}
+      </div>
+      </div>
+    </Layout>
   );
 };

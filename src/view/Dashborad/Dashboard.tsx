@@ -45,74 +45,73 @@ export const Dashboard = () => {
   }
 
   return (
-    <div className={styles.wrapper}>
-      <Layout>
-        <div className={styles.content}>
-          <div className={styles.row}>
-            <div className={styles["counter-container"]}>
-              <Card
-                icon={<MdOutlineProductionQuantityLimits size={50} />}
-                text="Ilość dostępnych produktów"
-                wrapperClassName={styles.wrapperClassName}
-                contentClassName={styles.contentClassName}
-              >
-                <div className={styles.counter}>
-                  <Counter delay={50} min={0} max={200} />
-                </div>
-              </Card>
-              <Card
-                icon={<IoDocumentTextOutline size={50} />}
-                text="Ilość dostępnych produktów"
-                wrapperClassName={styles.wrapperClassName}
-                contentClassName={styles.contentClassName}
-              >
-                <div className={styles.counter}>
-                  <Counter delay={50} min={0} max={200} />
-                </div>
-              </Card>
+    <Layout>
+      <div className={styles.content}>
+      <div className={styles.row}>
+        <div className={styles["counter-container"]}>
+          <Card
+            icon={<MdOutlineProductionQuantityLimits size={50} />}
+            text="Ilość dostępnych produktów"
+            wrapperClassName={styles.wrapperClassName}
+            contentClassName={styles.contentClassName}
+          >
+            <div className={styles.counter}>
+              <Counter delay={50} min={0} max={200} />
             </div>
-          </div>
-          <div className={styles.row}>
-            <div className={styles["section2"]}>
-              <Card
-                isError={productIsError}
-                isLoading={productIsLoading}
-                icon={<IoDocumentTextOutline size={50} />}
-                text="Ostatnio dodane produkty"
-                wrapperClassName={styles.wrapperClassName}
-                contentClassName={styles.contentClassName}
-              >
-                <div className={styles["last-added-products"]}>
-                  {renderProductCollection()}
-                </div>
-              </Card>
-              <Card
-                isError={productIsError}
-                isLoading={productIsLoading}
-                icon={<IoDocumentTextOutline size={50} />}
-                text="Kończące się produkty"
-                wrapperClassName={styles.wrapperClassName}
-                contentClassName={styles.contentClassName}
-              >
-                <div className={styles["last-products"]}>
-                  {renderProductCollection()}
-                </div>
-              </Card>
+          </Card>
+          <Card
+            icon={<IoDocumentTextOutline size={50} />}
+            text="Ilość dostępnych produktów"
+            wrapperClassName={styles.wrapperClassName}
+            contentClassName={styles.contentClassName}
+          >
+            <div className={styles.counter}>
+              <Counter delay={50} min={0} max={200} />
             </div>
-          </div>
-          <div className={styles.row}>
-            <div className={styles["last-recipts"]}>
-              <Table
-                tHeadCollection={LATEST_RECIPT_TABLE_HEADERS}
-                tBodyCollection={LATEST_RECIPT}
-                text="Ostatnio przeglądane przepisy"
-                icon={<AiOutlineLaptop size={25} />}
-                fnHandleButtonClick={() => {}}
-              />
-            </div>
-          </div>
+          </Card>
         </div>
-      </Layout>
-    </div>
+      </div>
+      <div className={styles.row}>
+        <div className={styles["section2"]}>
+          <Card
+            isError={productIsError}
+            isLoading={productIsLoading}
+            icon={<IoDocumentTextOutline size={50} />}
+            text="Ostatnio dodane produkty"
+            wrapperClassName={styles.wrapperClassName}
+            contentClassName={styles.contentClassName}
+          >
+            <div className={styles["last-added-products"]}>
+              {renderProductCollection()}
+            </div>
+          </Card>
+          <Card
+            isError={productIsError}
+            isLoading={productIsLoading}
+            icon={<IoDocumentTextOutline size={50} />}
+            text="Kończące się produkty"
+            wrapperClassName={styles.wrapperClassName}
+            contentClassName={styles.contentClassName}
+          >
+            <div className={styles["last-products"]}>
+              {renderProductCollection()}
+            </div>
+          </Card>
+        </div>
+      </div>
+      <div className={styles.row}>
+        <div className={styles["last-recipts"]}>
+          <Table
+            tHeadCollection={LATEST_RECIPT_TABLE_HEADERS}
+            tBodyCollection={LATEST_RECIPT}
+            text="Ostatnio przeglądane przepisy"
+            icon={<AiOutlineLaptop size={25} />}
+            fnHandleButtonClick={() => {}}
+            fnHandleRecordClick={(value)=>console.log(value)}
+          />
+        </div>
+      </div>
+      </div>
+    </Layout>
   );
 };
