@@ -1,11 +1,13 @@
 .wrapper {
   display: flex;
   width: 100%;
-  height: calc(100vh - 8rem);
-  .content {
-    padding: 4rem;
-    width: 100%;
-    background-color: #eee;
-    height: 100%;
-  }
+  min-height: calc(100vh - 8rem);
+  height: 100%;
+}
+
+.content {
+  padding: 4rem;
+  width: 100%;
+  background-color: #eee;
+  min-height: calc(100vh - 8rem);
 }

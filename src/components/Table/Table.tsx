@@ -19,7 +19,7 @@ interface TableProps {
   isError?:boolean;
   isLoading?:boolean
   fnHandleButtonClick: () => void;
-  fnHandleRecordClick: (e:React.MouseEvent<HTMLTableRowElement, MouseEvent>) => void;
+  // fnHandleRecordClick?: (e:React.MouseEvent<HTMLTableRowElement, MouseEvent>) => void;
 }
 
 export const Table = ({
@@ -36,7 +36,6 @@ export const Table = ({
   isError,
   isLoading,
   fnHandleButtonClick,
-  fnHandleRecordClick
 }: 
 TableProps) => {
   function handleTheadCollection(): JSX.Element[] {
@@ -59,7 +58,7 @@ TableProps) => {
       arrayTr.push(arrayTd);
     });
     const collection: JSX.Element[] = arrayTr.map((tr, trKey) => {
-      return <tr onClick={(value)=>fnHandleRecordClick(value)}  key={trKey}>{tr}</tr>;
+      return <tr key={trKey}>{tr}</tr>;
     });
     return collection;
   }

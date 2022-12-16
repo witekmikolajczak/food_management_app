@@ -13,11 +13,13 @@ global {
     icon: JSX.Element;
   }
   interface ProductInterface {
+    positionNumber?:string;
     id?: string;
-    productType: string;
+    productType?: string;
     productUnit: string;
     productName: string;
     productCount: string;
+    delete?:JSX.Element
   }
   interface RecentlyViewedRecipt {
     id: string;

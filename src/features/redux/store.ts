@@ -6,6 +6,7 @@ import { authListenerMiddleware } from "./middleware/auth";
 export function initStore() {
   return configureStore({
     reducer: createReducer(),
+    //@ts-expect-error
     middleware: (getDefaultMiddleware) => [
       ...getDefaultMiddleware(),
       authApi.middleware,

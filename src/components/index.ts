@@ -13,6 +13,7 @@ import { SearchBar } from "./Pagination/SearchBar/SearchBar";
 import { CustomInput } from "./Input/CustomInput";
 import { Select } from "./Select/Select";
 import { Loading } from "./Loading/Loading";
+import { ProductCard } from "./Card/ProductCard/ProductCard";
 
 export {
   Button,
@@ -30,4 +31,5 @@ export {
   CustomInput,
   Select,
   Loading,
+  ProductCard,
 };

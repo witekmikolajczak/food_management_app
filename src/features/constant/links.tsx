@@ -26,12 +26,12 @@ export const SIDEBAR_LINKS_COLLECTION = [
     path: "edit-product",
     icon: <AiFillEdit size={20} />,
   },
-  {
-    id: "3",
-    name: "Usuń produkt",
-    path: "delete-product",
-    icon: <AiOutlineDelete size={20} />,
-  },
+  // {
+  //   id: "3",
+  //   name: "Usuń produkt",
+  //   path: "delete-product",
+  //   icon: <AiOutlineDelete size={20} />,
+  // },
   {
     id: "4",
     name: "Lista przepisów",

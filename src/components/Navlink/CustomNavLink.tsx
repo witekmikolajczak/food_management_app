@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 import styles from "./CustomNavLink.module.scss";
 
@@ -22,9 +22,9 @@ export const CustomNavLink = ({
         onClick={(event) => fnHandleClick(event)}
         id={link.name}
       >
-        <NavLink
+        <Link
           to={`/${link.path}`}
-          className={({ isActive }) => (isActive ? styles.active : undefined)}
+          // className={({ isActive }) => (isActive ? styles.active : undefined)}
         >
           <div className={`${isHidden && styles.content}`}>
             <div className={styles["icon-container"]}>{link.icon}</div>
@@ -33,7 +33,7 @@ export const CustomNavLink = ({
               {!isHidden ? link.name && <p>{link.name}</p> : ""}
             </div>
           </div>
-        </NavLink>
+        </Link>
       </li>
     );
   });
