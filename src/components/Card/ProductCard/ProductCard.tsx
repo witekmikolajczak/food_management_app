@@ -10,6 +10,7 @@ interface ProductCardInterface {
   unitCollection: any[];
   productCount: string;
   selectedProductUnit: string;
+  isTypeDisabled?: boolean;
 
   setProductName: (value: React.SetStateAction<string>) => void;
   handleProductType: (e: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -28,6 +29,8 @@ export const ProductCard = ({
   unitCollection,
   productCount,
   selectedProductUnit,
+  isTypeDisabled,
+
   setProductName,
   handleProductType,
   setSelectedProductUnit,
@@ -54,6 +57,7 @@ export const ProductCard = ({
         <div className={styles["product-type"]}>
           <Select
             optionCollection={productUnitCollection}
+            isDisabled={isTypeDisabled}
             label={true}
             labelText="Typ produktu"
             fnHandleSelectChange={(e) => handleProductType(e)}

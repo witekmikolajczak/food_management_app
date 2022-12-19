@@ -63,7 +63,6 @@ export function useAddProduct() {
 
   useEffect(() => {
     if (createProductSuccess) {
-      console.log(createProductData);
       setProducts([]);
     }
   }, [createProductError, createProductLoading, createProductSuccess]);

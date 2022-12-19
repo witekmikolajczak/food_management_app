@@ -13,8 +13,14 @@ const productReducer = createSlice({
       state = action.payload;
       return state;
     },
+
+    loadActiveProduct: (state, action: PayloadAction<typeof initialState>) => {
+      state = action.payload;
+      return state;
+    },
   },
 });
 
-export const { loadProductCollection } = productReducer.actions;
+export const { loadProductCollection, loadActiveProduct } =
+  productReducer.actions;
 export default productReducer.reducer;

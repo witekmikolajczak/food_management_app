@@ -2,7 +2,7 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import createReducer from "./root";
 import { authApi } from "./api/auth";
 import { authListenerMiddleware } from "./middleware/auth";
-
+import { productListenerMiddleware } from "./middleware/product";
 export function initStore() {
   return configureStore({
     reducer: createReducer(),
@@ -11,10 +11,14 @@ export function initStore() {
       ...getDefaultMiddleware(),
       authApi.middleware,
       authListenerMiddleware.middleware,
+      productListenerMiddleware.middleware,
     ],
   });
 }
 const store = initStore();
+store.subscribe(() => {
+  console.log(store.getState());
+});
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
