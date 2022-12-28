@@ -1,11 +1,11 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { withRouter } from 'storybook-addon-react-router-v6';
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { withRouter } from "storybook-addon-react-router-v6";
 
-import { Sidebar } from './Sidebar';
-import { SIDEBAR_LINKS_COLLECTION } from '../../features/constant/links';
+import { Sidebar } from "./Sidebar";
+import { SIDEBAR_LINKS_COLLECTION } from "../../features/constant/links";
 
 export default {
-  title: 'Components/Sidebar',
+  title: "Components/Sidebar",
   component: Sidebar,
   decorators: [withRouter],
 } as ComponentMeta<typeof Sidebar>;

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import styles from './CustomInput.module.scss';
+import styles from "./CustomInput.module.scss";
 
 interface InputProps {
   label?: boolean;

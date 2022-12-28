@@ -1,5 +1,4 @@
 global {
-
   interface AuthInterface {
     id: string;
     name: string;
@@ -13,12 +12,28 @@ global {
     name?: string;
     icon: JSX.Element;
   }
-  interface ProductInterface {
-    id?:string
+
+  interface CurrentProductInterface {
+    createdAt: string;
+    createdBy: {
+      __type: string;
+      className: string;
+    };
+    productCount: number;
+    productName: string;
     productType: string;
+    productUnit: string;
+    updatedAt: string;
+  }
+
+  interface ProductInterface {
+    positionNumber?: string;
+    id?: string;
+    productType?: string;
     productUnit: string;
     productName: string;
     productCount: string;
+    delete?: JSX.Element;
   }
   interface RecentlyViewedRecipt {
     id: string;
@@ -29,9 +44,9 @@ global {
 
   interface UnitInterface {
     type: string;
-    units:{
-      description:string
-    }[]
+    units: {
+      description: string;
+    }[];
     description: string;
   }
 }

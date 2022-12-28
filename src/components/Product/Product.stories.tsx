@@ -1,10 +1,10 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Product } from './Product';
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Product } from "./Product";
 
-import { productCollection } from '../../features/constant/productCollection';
+import { productCollection } from "../../features/constant/productCollection";
 
 export default {
-  title: 'Components/Product',
+  title: "Components/Product",
   component: Product,
 } as ComponentMeta<typeof Product>;
 

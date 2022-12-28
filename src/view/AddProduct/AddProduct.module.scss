@@ -1,51 +1,42 @@
-.wrapper {
-  display: flex;
-  background-color: #eee;
-  min-height: 100vh;
-  .add {
-    padding: 3rem;
-    width: 100%;
-    .wrapperClassName {
-      width: 400px;
+.add {
+  width: 100%;
+  .wrapperClassName {
+    width: 400px;
+  }
+  .card-content {
+    padding: 1rem;
+    .product-type {
+      margin-top: 2rem;
+    }
+    .product-unit,
+    .product-count {
+      margin-top: 2rem;
     }
 
-    .card-content {
-      padding: 1rem;
+    .button-container {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: end;
 
-      .product-type {
-        margin-top: 2rem;
-      }
-      .product-unit,
-      .product-count {
-        margin-top: 2rem;
-      }
-
-      .button-container {
-        margin-top: 1rem;
-        display: flex;
-        justify-content: end;
-
-        button {
-          width: 90px;
-        }
+      button {
+        width: 90px;
       }
     }
+  }
 
-    .table {
-      // padding: 1rem;
-      margin-top: 5rem;
-      width: 100%;
-    }
-    .delete {
-      width: 50px;
-      text-align: center;
+  .table {
+    margin-top: 5rem;
+    width: auto;
+  }
+  .delete {
+    width: 50px;
+    text-align: center;
 
-      svg {
-        cursor: pointer;
+    svg {
+      cursor: pointer;
 
-        &:hover {
-          color: red;
-        }
+      &:hover {
+        color: red;
       }
     }
   }

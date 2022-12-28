@@ -1,14 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import { Typography } from '../Typography/Typography';
-import styles from './Button.module.scss';
+import { Typography } from "../Typography/Typography";
+import styles from "./Button.module.scss";
 interface ButtonInterface {
-  type: 'primary' | 'secondary';
+  type: "primary" | "secondary";
   className?: string;
   text: string;
-  fnHandleClick: (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => void;
+  fnHandleClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 export const Button = ({
   fnHandleClick,
@@ -16,8 +14,7 @@ export const Button = ({
   className,
   type,
 }: ButtonInterface) => {
-  const buttonStyle =
-    type === 'primary' ? styles.primary : styles.secondary;
+  const buttonStyle = type === "primary" ? styles.primary : styles.secondary;
 
   return (
     <button

@@ -1,9 +1,9 @@
-import { withRouter } from 'storybook-addon-react-router-v6';
+import { withRouter } from "storybook-addon-react-router-v6";
 
-import { Dashboard } from './Dashboard';
+import { Dashboard } from "./Dashboard";
 
 export default {
-  title: 'Pages/Dashboard',
+  title: "Pages/Dashboard",
   component: Dashboard,
   decorators: [withRouter],
 };

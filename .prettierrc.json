@@ -1,0 +1,14 @@
+{
+  "overrides": [
+    {
+      "files": ["*.tsx", "*.scss"],
+      "semi": true,
+      "tabWidth": 150
+    }
+  ],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  }
+
+}

@@ -1,9 +1,9 @@
-import { withRouter } from 'storybook-addon-react-router-v6';
+import { withRouter } from "storybook-addon-react-router-v6";
 
-import { LandingPage } from './LandingPage';
+import { LandingPage } from "./LandingPage";
 
 export default {
-  title: 'Pages/LandingPage',
+  title: "Pages/LandingPage",
   component: LandingPage,
   decorators: [withRouter],
 };

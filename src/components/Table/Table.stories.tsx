@@ -1,16 +1,14 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Table } from './Table';
-import { LATEST_RECIPT } from '../../features/constant/latestRecipt';
-import { AiOutlineLaptop } from 'react-icons/ai';
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Table } from "./Table";
+import { LATEST_RECIPT } from "../../features/constant/latestRecipt";
+import { AiOutlineLaptop } from "react-icons/ai";
 
 export default {
-  title: 'Components/Table',
+  title: "Components/Table",
   component: Table,
 } as ComponentMeta<typeof Table>;
 
-const Template: ComponentStory<typeof Table> = (args) => (
-  <Table {...args} />
-);
+const Template: ComponentStory<typeof Table> = (args) => <Table {...args} />;
 
 export const TableStory = Template.bind({});
 

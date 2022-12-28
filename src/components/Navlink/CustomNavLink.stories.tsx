@@ -1,11 +1,11 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { CustomNavLink } from './CustomNavLink';
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { CustomNavLink } from "./CustomNavLink";
 
-import { withRouter } from 'storybook-addon-react-router-v6';
-import { SIDEBAR_LINKS_COLLECTION } from '../../features/constant/links';
+import { withRouter } from "storybook-addon-react-router-v6";
+import { SIDEBAR_LINKS_COLLECTION } from "../../features/constant/links";
 
 export default {
-  title: 'Components/NavLink',
+  title: "Components/NavLink",
   component: CustomNavLink,
   decorators: [withRouter],
 } as ComponentMeta<typeof CustomNavLink>;

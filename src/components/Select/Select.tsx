@@ -1,16 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import styles from './Select.module.scss';
+import styles from "./Select.module.scss";
 
 interface SelectProps {
   label: boolean;
   isDisabled?: boolean;
   labelText?: string;
   className?: string;
-  optionCollection:any[]
-  fnHandleSelectChange: (
-    e: React.ChangeEvent<HTMLSelectElement>
-  ) => void;
+  optionCollection: any[];
+  fnHandleSelectChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 export const Select = ({
   label,
@@ -20,12 +18,19 @@ export const Select = ({
   optionCollection,
   fnHandleSelectChange,
 }: SelectProps) => {
-
-  function handleOptionCollection():JSX.Element[]{
-    const collection = optionCollection.map((option, index)=>{ 
-      return (<option onClick={()=>console.log(option)} key={index} value={option.description}>{option.description}</option>)
-    })
-    return collection
+  function handleOptionCollection(): JSX.Element[] {
+    const collection = optionCollection.map((option, index) => {
+      return (
+        <option
+          onClick={() => console.log(option)}
+          key={index}
+          value={option.description}
+        >
+          {option.description}
+        </option>
+      );
+    });
+    return collection;
   }
   return (
     <div className={`${styles.wrapper} ${className}`}>

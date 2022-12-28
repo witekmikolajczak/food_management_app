@@ -1,9 +1,9 @@
-import { withRouter } from 'storybook-addon-react-router-v6';
+import { withRouter } from "storybook-addon-react-router-v6";
 
-import { AddProduct } from './AddProduct';
+import { AddProduct } from "./AddProduct";
 
 export default {
-  title: 'Pages/AddProduct',
+  title: "Pages/AddProduct",
   component: AddProduct,
   decorators: [withRouter],
 };

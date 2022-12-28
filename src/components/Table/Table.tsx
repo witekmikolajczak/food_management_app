@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import { Card } from '../Card/Card';
-import { Button } from '../Button/Button';
-import styles from './Table.module.scss';
+import { Card } from "../Card/Card";
+import { Button } from "../Button/Button";
+import styles from "./Table.module.scss";
 
 interface TableProps {
   icon: JSX.Element;
@@ -10,14 +10,16 @@ interface TableProps {
   tBodyCollection: any[];
   tFootCollection?: any[];
   text: string;
-  // fnHandleClick: () => void;
   className?: string;
   showFooter?: boolean;
 
   showButton?: boolean;
   buttonText?: string;
-  buttonType?: 'primary' | 'secondary';
+  buttonType?: "primary" | "secondary";
+  isError?:boolean;
+  isLoading?:boolean
   fnHandleButtonClick: () => void;
+  // fnHandleRecordClick?: (e:React.MouseEvent<HTMLTableRowElement, MouseEvent>) => void;
 }
 
 export const Table = ({
@@ -31,36 +33,40 @@ export const Table = ({
   showButton,
   buttonText,
   buttonType,
+  isError,
+  isLoading,
   fnHandleButtonClick,
-  // fnHandleClick,
-}: TableProps) => {
+}: 
+TableProps) => {
+  function handleTheadCollection(): JSX.Element[] {
+    const collection: JSX.Element[] = Object.values(tHeadCollection).map(
+      (value: any, index: number) => {
+        return <td key={index}>{value}</td>;
+      }
+    );
 
-  function handleTheadCollection():JSX.Element[]{    
-    const collection:JSX.Element[] = Object.values(tHeadCollection).map((value:any,index:number)=>{      
-      return <td key={index}>{value}</td>
-    })  
-    
-    return collection
+    return collection;
   }
 
-  function handleTbodyCollection():JSX.Element[]{
-    const arrayTr:any[] = []
-    tBodyCollection.map((value,mapIndex)=>{
-      const arrayTd:JSX.Element[]=[]
-      Object.entries(value).map(([key,value]:any, index)=>{  
-        arrayTd.push(<td key={key}>{value}</td>)
-      })  
-      arrayTr.push(arrayTd)
-
-    })    
-    const collection: JSX.Element[] = arrayTr.map((tr, trKey)=>{
-      return <tr key={trKey}>{tr}</tr>
-    })    
-    return collection
+  function handleTbodyCollection(): JSX.Element[] {
+    const arrayTr: any[] = [];
+    tBodyCollection.map((value, mapIndex) => {
+      const arrayTd: JSX.Element[] = [];
+      Object.entries(value).map(([key, value]: any, index) => {
+        arrayTd.push(<td key={key}>{value}</td>);
+      });
+      arrayTr.push(arrayTd);
+    });
+    const collection: JSX.Element[] = arrayTr.map((tr, trKey) => {
+      return <tr key={trKey}>{tr}</tr>;
+    });
+    return collection;
   }
 
   return (
     <Card
+      isError={isError}
+      isLoading={isLoading}
       wrapperClassName={`${styles.wrapperClassName} ${className}`}
       icon={icon}
       text={text}
@@ -68,21 +74,15 @@ export const Table = ({
       <div className={styles.wrapper}>
         <table className={styles.table}>
           <thead>
-            <tr>
-              {handleTheadCollection()}
-            </tr>
+            <tr>{handleTheadCollection()}</tr>
           </thead>
-          <tbody>
-            
-              {handleTbodyCollection()}
-            
-          </tbody>
+          <tbody>{handleTbodyCollection()}</tbody>
           {showFooter && <tfoot>{tFootCollection}</tfoot>}
         </table>
       </div>
       <>
         {showButton && (
-          <div className={styles['under-table']}>
+          <div className={styles["under-table"]}>
             <Button
               text={buttonText!}
               fnHandleClick={fnHandleButtonClick}
