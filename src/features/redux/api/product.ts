@@ -79,6 +79,20 @@ export const productApi = createApi({
         return response;
       },
     }),
+
+    productDelete: build.mutation({
+      query: (data: { sessionToken: string; productId: string }) => ({
+        url: `/classes/Product/${data.productId}`,
+        method: "DELETE",
+        headers: {
+          "X-Parse-Application-Id": VITE_APP_PARSE_APP_ID,
+          "X-Parse-Session-Token": data.sessionToken,
+        },
+      }),
+      transformResponse: (response: CurrentProductInterface) => {
+        return response;
+      },
+    }),
   }),
 });
 
@@ -87,4 +101,5 @@ export const {
   useProductCollectionMutation,
   useUpdateProductMutation,
   useProductObjectMutation,
+  useProductDeleteMutation,
 } = productApi;

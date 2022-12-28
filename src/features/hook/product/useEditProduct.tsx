@@ -3,11 +3,20 @@ import { AiFillEdit, AiOutlineDelete } from "react-icons/ai";
 import { useFetchProduct } from "./useFetchProduct";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
-import { loadActiveProduct } from "../../redux/reducer/product";
+import { useProductDeleteMutation } from "../../redux/api/product";
 export const useEditProduct = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const stateProductCollection = useAppSelector((state) => state.product);
+  const sessionToken = useAppSelector((state) => state.auth.sessionToken);
+  const [
+    productDelete,
+    {
+      isError: isDeleteError,
+      isSuccess: isDeleteSuccess,
+      isLoading: isDeleteLoading,
+    },
+  ] = useProductDeleteMutation();
   const { fetchProductCollection, productIsError, productIsLoading } =
     useFetchProduct();
   const [productCollection, setProductCollection] = useState<
@@ -27,7 +36,10 @@ export const useEditProduct = () => {
                 onClick={() => handleProductClick(product)}
                 size={25}
               />
-              <AiOutlineDelete onClick={() => console.log(product)} size={25} />
+              <AiOutlineDelete
+                onClick={() => handleProductDelete(product)}
+                size={25}
+              />
             </div>
           ),
         };
@@ -41,6 +53,14 @@ export const useEditProduct = () => {
 
   function handleProductClick(product: ProductInterface) {
     navigate(`/edit-product/${product.id}`);
+  }
+  function handleProductDelete(product: ProductInterface) {
+    console.log(product.id);
+    const data = {
+      sessionToken: sessionToken,
+      productId: product.id!,
+    };
+    productDelete(data);
   }
 
   return {
