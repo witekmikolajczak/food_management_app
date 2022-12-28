@@ -8,15 +8,20 @@ interface ProductCreateInterface {
   sessionToken: string;
 }
 
+interface UpdateInterface {
+  data: CurrentProductInterface;
+  sessionToken: string;
+  productId: string;
+}
 export const productApi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: `${VITE_APP_REST_API_URL}/parse/functions`,
+    baseUrl: `${VITE_APP_REST_API_URL}/parse`,
   }),
   refetchOnMountOrArgChange: true,
   endpoints: (build) => ({
     createProduct: build.mutation({
       query: (data: ProductCreateInterface) => ({
-        url: `/createProduct`,
+        url: `/functions/createProduct`,
         method: "POST",
         headers: {
           "X-Parse-Application-Id": VITE_APP_PARSE_APP_ID,
@@ -30,7 +35,7 @@ export const productApi = createApi({
 
     productCollection: build.mutation({
       query: (sessionToken: string) => ({
-        url: "/productCollection",
+        url: "/functions/productCollection",
         method: "POST",
         headers: {
           "X-Parse-Application-Id": VITE_APP_PARSE_APP_ID,
@@ -41,8 +46,45 @@ export const productApi = createApi({
         return response.result;
       },
     }),
+
+    updateProduct: build.mutation({
+      query: (data: UpdateInterface) => ({
+        url: `/classes/Product/${data.productId}`,
+        method: "PUT",
+        headers: {
+          "X-Parse-Application-Id": VITE_APP_PARSE_APP_ID,
+          "X-Parse-Session-Token": data.sessionToken,
+        },
+        body: {
+          productName: data.data.productName,
+          productCount: data.data.productCount,
+          productUnit: data.data.productUnit,
+        },
+      }),
+      transformResponse: (response: { result: ProductInterface[] }) => {
+        return response.result;
+      },
+    }),
+
+    productObject: build.mutation({
+      query: (data: { sessionToken: string; productId: string }) => ({
+        url: `/classes/Product/${data.productId}`,
+        method: "GET",
+        headers: {
+          "X-Parse-Application-Id": VITE_APP_PARSE_APP_ID,
+          "X-Parse-Session-Token": data.sessionToken,
+        },
+      }),
+      transformResponse: (response: CurrentProductInterface) => {
+        return response;
+      },
+    }),
   }),
 });
 
-export const { useCreateProductMutation, useProductCollectionMutation } =
-  productApi;
+export const {
+  useCreateProductMutation,
+  useProductCollectionMutation,
+  useUpdateProductMutation,
+  useProductObjectMutation,
+} = productApi;

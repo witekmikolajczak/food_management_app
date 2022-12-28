@@ -21,15 +21,7 @@ export function useAddProduct() {
   const [unitCollection, setUnitCollection] = useState<any[]>(
     productUnitCollection[0].units
   );
-  const [products, setProducts] = useState<
-    {
-      productId: string;
-      productName: string;
-      productCount: string;
-      productUnit: string;
-      delete?: JSX.Element;
-    }[]
-  >([]);
+  const [products, setProducts] = useState<ProductInterface[]>([]);
 
   const handleProductType = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const collection = productUnitCollection.filter(
@@ -39,7 +31,7 @@ export function useAddProduct() {
   };
 
   function handleDeleteFromTable(productId: string) {
-    setProducts(products.filter((value) => value.productId !== productId));
+    setProducts(products.filter((value) => value.id !== productId));
   }
 
   function handleSendProduct() {

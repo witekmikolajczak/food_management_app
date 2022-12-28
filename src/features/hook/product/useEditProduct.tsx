@@ -40,8 +40,6 @@ export const useEditProduct = () => {
   }, []);
 
   function handleProductClick(product: ProductInterface) {
-    //  console.log(product);
-    dispatch(loadActiveProduct([product]));
     navigate(`/edit-product/${product.id}`);
   }
 

@@ -3,43 +3,80 @@ import { productUnitCollection } from "../../features/constant/productOptionColl
 import { Layout, Sidebar, ProductCard } from "../../components";
 import { useAddProduct } from "../../features/hook/product/useAddProduct";
 import { useAppSelector } from "../../features/redux/hook";
+import { useEditProduct } from "../../features/hook/product/useEditProduct";
+import { useUpdateProductMutation } from "../../features/redux/api/product";
+import { useEditDetailProduct } from "../../features/hook/product/useEditDetailProduct";
+
 export const EditDetailProduct = () => {
+  const { unitCollection, selectedProductUnit, handleProductType } =
+    useAddProduct();
+
+  const [
+    updateProduct,
+    {
+      data: productUpdateData,
+      isError: productUpdateIsError,
+      isLoading: productUpdateIsLoading,
+      isSuccess: productUpdateIsSuccess,
+    },
+  ] = useUpdateProductMutation();
   const {
-    products,
-    productName,
-    unitCollection,
-    productCount,
-    selectedProductUnit,
+    currentProduct,
+    productId,
+    setCurrentProduct,
+    isLoading,
+    isError,
+    isSuccess,
+    sessionToken,
+  } = useEditDetailProduct();
 
-    setProductCount,
-    setProducts,
-    setProductName,
-    setSelectedProductUnit,
+  function handleSendUpdateProduct() {
+    const data = {
+      productId: productId.id,
+      sessionToken: sessionToken,
+      data: currentProduct!,
+    };
+    updateProduct(data);
+  }
+  console.log(currentProduct);
 
-    handleDeleteFromTable,
-    handleProductType,
-    handleSendProduct,
-  } = useAddProduct();
-
-  const product = useAppSelector((state) => state.product[0]);
-  useEffect(() => {
-    console.log("here");
-  }, [window.onbeforeunload]);
   return (
     <Layout>
-      <ProductCard
-        isTypeDisabled={true}
-        productName={product.productName}
-        productUnitCollection={productUnitCollection}
-        unitCollection={unitCollection}
-        productCount={product.productCount}
-        selectedProductUnit={selectedProductUnit}
-        setProductName={setProductName}
-        handleProductType={handleProductType}
-        setSelectedProductUnit={setSelectedProductUnit}
-        setProductCount={setProductCount}
-        handleAddProduct={() => console.log("test")}
-      />
+      {isSuccess && !isLoading && currentProduct ? (
+        <ProductCard
+          isError={isError}
+          isLoading={isLoading}
+          buttonText="Zaktualizuj"
+          isTypeDisabled={true}
+          productName={currentProduct.productName}
+          productUnitCollection={productUnitCollection}
+          unitCollection={unitCollection}
+          productCount={currentProduct.productCount}
+          selectedProductUnit={selectedProductUnit}
+          setProductName={(value) =>
+            setCurrentProduct({
+              ...currentProduct,
+              productName: value,
+            })
+          }
+          handleProductType={handleProductType}
+          setSelectedProductUnit={(value) =>
+            setCurrentProduct({
+              ...currentProduct,
+              productUnit: value,
+            })
+          }
+          setProductCount={(value) =>
+            setCurrentProduct({
+              ...currentProduct,
+              productCount: Number(value),
+            })
+          }
+          handleAddProduct={handleSendUpdateProduct}
+        />
+      ) : (
+        <div></div>
+      )}
     </Layout>
   );
 };

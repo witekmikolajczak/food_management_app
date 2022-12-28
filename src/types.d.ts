@@ -12,14 +12,28 @@ global {
     name?: string;
     icon: JSX.Element;
   }
+
+  interface CurrentProductInterface {
+    createdAt: string;
+    createdBy: {
+      __type: string;
+      className: string;
+    };
+    productCount: number;
+    productName: string;
+    productType: string;
+    productUnit: string;
+    updatedAt: string;
+  }
+
   interface ProductInterface {
-    positionNumber?:string;
+    positionNumber?: string;
     id?: string;
     productType?: string;
     productUnit: string;
     productName: string;
     productCount: string;
-    delete?:JSX.Element
+    delete?: JSX.Element;
   }
   interface RecentlyViewedRecipt {
     id: string;

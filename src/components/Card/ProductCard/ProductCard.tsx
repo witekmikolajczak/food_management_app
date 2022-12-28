@@ -8,14 +8,17 @@ interface ProductCardInterface {
   productName: string;
   productUnitCollection: UnitInterface[];
   unitCollection: any[];
-  productCount: string;
+  productCount: number;
   selectedProductUnit: string;
+  buttonText: string;
   isTypeDisabled?: boolean;
+  isLoading?: boolean;
+  isError?: boolean;
 
-  setProductName: (value: React.SetStateAction<string>) => void;
+  setProductName: (productName: string) => void;
   handleProductType: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  setSelectedProductUnit: (value: React.SetStateAction<string>) => void;
-  setProductCount: (value: React.SetStateAction<string>) => void;
+  setSelectedProductUnit: (unit: string) => void;
+  setProductCount: (count: string) => void;
   handleAddProduct: (
     productId: string,
     productName: string,
@@ -30,6 +33,9 @@ export const ProductCard = ({
   productCount,
   selectedProductUnit,
   isTypeDisabled,
+  buttonText,
+  isLoading,
+  isError,
 
   setProductName,
   handleProductType,
@@ -39,6 +45,8 @@ export const ProductCard = ({
 }: ProductCardInterface) => {
   return (
     <Card
+      isError={isError}
+      isLoading={isLoading}
       icon={<MdProductionQuantityLimits size={25} />}
       text="Dodaj produkt"
       wrapperClassName={styles.wrapperClassName}
@@ -87,12 +95,12 @@ export const ProductCard = ({
         <div className={styles["button-container"]}>
           <Button
             type="primary"
-            text="Dodaj"
+            text={buttonText}
             fnHandleClick={() =>
               handleAddProduct(
                 Math.random().toString(),
                 productName,
-                productCount,
+                productCount.toString(),
                 selectedProductUnit
               )
             }
