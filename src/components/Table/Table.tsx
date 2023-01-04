@@ -3,6 +3,7 @@ import React from "react";
 import { Card } from "../Card/Card";
 import { Button } from "../Button/Button";
 import styles from "./Table.module.scss";
+import { Typography } from "../Typography/Typography";
 
 interface TableProps {
   icon: JSX.Element;
@@ -16,8 +17,8 @@ interface TableProps {
   showButton?: boolean;
   buttonText?: string;
   buttonType?: "primary" | "secondary";
-  isError?:boolean;
-  isLoading?:boolean
+  isError?: boolean;
+  isLoading?: boolean;
   fnHandleButtonClick: () => void;
   // fnHandleRecordClick?: (e:React.MouseEvent<HTMLTableRowElement, MouseEvent>) => void;
 }
@@ -36,12 +37,15 @@ export const Table = ({
   isError,
   isLoading,
   fnHandleButtonClick,
-}: 
-TableProps) => {
+}: TableProps) => {
   function handleTheadCollection(): JSX.Element[] {
     const collection: JSX.Element[] = Object.values(tHeadCollection).map(
       (value: any, index: number) => {
-        return <td key={index}>{value}</td>;
+        return (
+          <td key={index}>
+            <Typography variant="h3" text={value} />
+          </td>
+        );
       }
     );
 
@@ -53,7 +57,11 @@ TableProps) => {
     tBodyCollection.map((value, mapIndex) => {
       const arrayTd: JSX.Element[] = [];
       Object.entries(value).map(([key, value]: any, index) => {
-        arrayTd.push(<td key={key}>{value}</td>);
+        arrayTd.push(
+          <td key={key}>
+            <Typography variant="p" text={value} />
+          </td>
+        );
       });
       arrayTr.push(arrayTd);
     });
@@ -70,6 +78,7 @@ TableProps) => {
       wrapperClassName={`${styles.wrapperClassName} ${className}`}
       icon={icon}
       text={text}
+      textVariant="p"
     >
       <div className={styles.wrapper}>
         <table className={styles.table}>

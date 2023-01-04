@@ -26,7 +26,7 @@ export const Counter = (props: CounterInterface) => {
   }, []);
   return (
     <div className={props.className}>
-      <Typography variant="h4" text={counter.toString()} />
+      <Typography variant="h1" text={counter.toString()} />
     </div>
   );
 };

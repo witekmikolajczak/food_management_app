@@ -15,6 +15,7 @@
   }
   p {
     margin: 0;
+    font-weight: 500;
   }
   div {
     display: flex;
@@ -39,8 +40,16 @@
   }
 
   &:hover {
-    background-color: #e0f3ff;
+    background-color: var(--background-secondary);
     transition: 0.8s;
+
+    p {
+      font-family: "Lato";
+      font-style: normal;
+      font-weight: 800;
+      color: #1ce0d9;
+      transition: 0.1s;
+    }
   }
 
   .active {

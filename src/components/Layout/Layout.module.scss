@@ -8,6 +8,6 @@
 .content {
   padding: 4rem;
   width: 100%;
-  background-color: #eee;
+  background-color: var(--background-secondary);
   min-height: calc(100vh - 8rem);
 }

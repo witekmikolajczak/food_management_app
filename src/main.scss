@@ -4,11 +4,19 @@ html {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 :root {
+  --background-secondary: #36364df2;
+  --background-primary: #28293d;
+  --button-primary: #1ce0d9;
+  --button-secondary: #404055;
+  --text-grey: #b9b9b9;
+  --text-black: #2d2f45;
+  --text-white: #ffffff;
+
+  --text-green: #1ce0d9;
   --green: #3ac47d;
   --red: #d92550;
 }
@@ -23,6 +31,53 @@ p {
   margin: 0;
   padding: 0;
 }
+
+h1 {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 35px;
+  line-height: 42px;
+  color: #ffffff;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+h2 {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #ffffff;
+}
+
+h2 .active {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #1ce0d9;
+}
+
+p {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #ffffff;
+}
+
+svg {
+  color: #1ce0d9 !important;
+}
+
 @keyframes fadeRight {
   from {
     transform: translate3d(-500px, 0, 0);
