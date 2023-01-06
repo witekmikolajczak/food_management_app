@@ -11,6 +11,7 @@ interface CardProps {
   contentClassName?: string;
   isError?: boolean;
   isLoading?: boolean;
+  textVariant?: "h1" | "h2" | "p";
 }
 export const Card = ({
   children,
@@ -20,6 +21,7 @@ export const Card = ({
   wrapperClassName,
   isError,
   isLoading,
+  textVariant,
 }: CardProps): JSX.Element => {
   function renderContent() {
     if (isError) {
@@ -33,7 +35,10 @@ export const Card = ({
             <>
               <div className={styles.header}>
                 {icon}
-                <Typography variant="p" text={text} />
+                <Typography
+                  variant={textVariant ? textVariant : "h2"}
+                  text={text}
+                />
               </div>
             </>
           )}

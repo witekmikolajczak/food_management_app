@@ -5,10 +5,13 @@
   position: relative;
   transition: color 0.15s, background-color 0.15s, border-color 0.15s,
     box-shadow 0.15s;
-  color: #fff;
-  background-color: #3f6ad8;
-  border-color: #3f6ad8;
+  background-color: var(--button-primary);
   padding: 0.5rem;
+  border: none;
+
+  & > * {
+    color: var(--text-black) !important;
+  }
 }
 .secondary {
   border-radius: 1px;
@@ -17,8 +20,12 @@
   position: relative;
   transition: color 0.15s, background-color 0.15s, border-color 0.15s,
     box-shadow 0.15s;
-  color: #fff;
-  background-color: #5a6268;
-  border-color: #545b62;
+  color: var(--text-green);
+  background-color: var(--button-secondary);
+  border-color: var(--text-green);
   padding: 0.5rem;
+
+  & > * {
+    color: var(--text-white) !important;
+  }
 }

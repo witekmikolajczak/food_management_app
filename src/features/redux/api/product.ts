@@ -18,7 +18,9 @@ export const productApi = createApi({
     baseUrl: `${VITE_APP_REST_API_URL}/parse`,
   }),
   refetchOnMountOrArgChange: true,
+  tagTypes: ["Product"],
   endpoints: (build) => ({
+    // CREATE PRODUCT
     createProduct: build.mutation({
       query: (data: ProductCreateInterface) => ({
         url: `/functions/createProduct`,
@@ -31,8 +33,10 @@ export const productApi = createApi({
           productCollection: data.body,
         },
       }),
+      invalidatesTags: ["Product"],
     }),
 
+    // PRODUCT COLLECTION
     productCollection: build.mutation({
       query: (sessionToken: string) => ({
         url: "/functions/productCollection",
@@ -45,6 +49,7 @@ export const productApi = createApi({
       transformResponse: (response: { result: ProductInterface[] }) => {
         return response.result;
       },
+      // providesTags: ["Product"],
     }),
 
     updateProduct: build.mutation({
@@ -92,6 +97,7 @@ export const productApi = createApi({
       transformResponse: (response: CurrentProductInterface) => {
         return response;
       },
+      invalidatesTags: ["Product"],
     }),
   }),
 });

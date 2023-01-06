@@ -34,23 +34,18 @@ export const AddProduct = (): JSX.Element => {
     handleSendProduct,
   } = useAddProduct();
 
-  function handleAddProduct(
-    productId: string,
-    productName: string,
-    productCount: string,
-    productUnit: string
-  ) {
-    if (productName && productCount && productUnit) {
+  function handleAddProduct(data: ProductInterface) {
+    if (data.productName && data.productCount && data.productUnit && data.id) {
       setProducts([
         ...products,
         {
-          productId: productId,
-          productName: productName,
-          productCount: productCount,
-          productUnit: productUnit,
+          id: data.id,
+          productName: data.productName,
+          productCount: data.productCount,
+          productUnit: data.productUnit,
           delete: (
             <AiOutlineDelete
-              onClick={() => handleDeleteFromTable(productId)}
+              onClick={() => handleDeleteFromTable(data.id!)}
               size={25}
             />
           ),
@@ -65,13 +60,14 @@ export const AddProduct = (): JSX.Element => {
           productName={productName}
           productUnitCollection={productUnitCollection}
           unitCollection={unitCollection}
-          productCount={productCount}
+          productCount={Number(productCount)}
           selectedProductUnit={selectedProductUnit}
           setProductName={setProductName}
           handleProductType={handleProductType}
           setSelectedProductUnit={setSelectedProductUnit}
           setProductCount={setProductCount}
           handleAddProduct={handleAddProduct}
+          buttonText={"Dodaj"}
         />
         <div className={styles.table}>
           <Table

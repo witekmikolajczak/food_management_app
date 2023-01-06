@@ -10,10 +10,12 @@ import { Recipt } from "./Recipt/Recipt";
 import { SelectBox } from "./Pagination/SelectBox/SelectBox";
 import { Table } from "./Table/Table";
 import { SearchBar } from "./Pagination/SearchBar/SearchBar";
-import { CustomInput } from "./Input/CustomInput";
+import { CustomInput } from "./Form/Input/CustomInput";
+import { Label } from "./Form/Label/Label";
 import { Select } from "./Select/Select";
 import { Loading } from "./Loading/Loading";
 import { ProductCard } from "./Card/ProductCard/ProductCard";
+import { Dropdown } from "./Dropdown/Dropdown";
 
 export {
   Button,
@@ -29,7 +31,9 @@ export {
   Table,
   SearchBar,
   CustomInput,
+  Label,
   Select,
   Loading,
   ProductCard,
+  Dropdown,
 };

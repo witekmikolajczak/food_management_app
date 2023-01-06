@@ -15,6 +15,7 @@
   }
   p {
     margin: 0;
+    font-weight: 500;
   }
   div {
     display: flex;
@@ -24,7 +25,7 @@
   }
   a {
     text-decoration: none;
-    color: black;
+    color: white;
   }
   .icon-container {
     display: flex;
@@ -36,15 +37,24 @@
   }
   .text-container {
     display: flex;
+    color: white;
   }
 
   &:hover {
-    background-color: #e0f3ff;
+    background-color: var(--background-secondary);
     transition: 0.8s;
+
+    p {
+      font-family: "Lato";
+      font-style: normal;
+      font-weight: 800;
+      color: #1ce0d9;
+      transition: 0.1s;
+    }
   }
 
-  .active {
-    font-weight: 600;
-    color: #3f6ad8;
+  .active p {
+    font-weight: 800;
+    color: #1ce0d9 !important;
   }
 }

@@ -1,10 +1,13 @@
 import React from "react";
 
 import styles from "./CustomInput.module.scss";
+import { Typography } from "../../Typography/Typography";
+import { Label } from "../Label/Label";
 
 interface InputProps {
   label?: boolean;
-  labelText?: string;
+  labelText: string;
+  labelVariant: "h1" | "h2" | "h3" | "p";
   className?: string;
   placeholder: string;
   name: string;
@@ -14,6 +17,7 @@ interface InputProps {
 export const CustomInput = ({
   label,
   labelText,
+  labelVariant,
   className,
   placeholder,
   name,
@@ -23,9 +27,11 @@ export const CustomInput = ({
   return (
     <div className={`${styles.wrapper} ${className}`}>
       {label && (
-        <label className={styles.label} htmlFor={name}>
-          {labelText}
-        </label>
+        <Label
+          htmlFor={name}
+          labelText={labelText}
+          labelVariant={labelVariant}
+        />
       )}
       <input
         className={styles.input}

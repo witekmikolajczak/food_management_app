@@ -6,6 +6,7 @@ interface ButtonInterface {
   type: "primary" | "secondary";
   className?: string;
   text: string;
+  textVariant?: "h1" | "h2" | "h3" | "p";
   fnHandleClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 export const Button = ({
@@ -13,6 +14,7 @@ export const Button = ({
   text,
   className,
   type,
+  textVariant,
 }: ButtonInterface) => {
   const buttonStyle = type === "primary" ? styles.primary : styles.secondary;
 
@@ -21,7 +23,7 @@ export const Button = ({
       className={!className ? buttonStyle : buttonStyle && className}
       onClick={(event) => fnHandleClick(event)}
     >
-      <Typography variant="p" text={text} />
+      <Typography variant={textVariant ? textVariant : "p"} text={text} />
     </button>
   );
 };

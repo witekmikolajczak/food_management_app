@@ -35,11 +35,11 @@
     justify-content: space-around;
 
     .wrapperClassName:first-child {
-      border: 1px solid var(--green);
+      border: 1px solid var(--text-green);
     }
 
     .wrapperClassName:nth-child(2) {
-      border: 1px solid var(--red);
+      border: 1px solid var(--text-green);
     }
 
     .last-added-products,

@@ -19,12 +19,7 @@ interface ProductCardInterface {
   handleProductType: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   setSelectedProductUnit: (unit: string) => void;
   setProductCount: (count: string) => void;
-  handleAddProduct: (
-    productId: string,
-    productName: string,
-    productCount: string,
-    productUnit: string
-  ) => void;
+  handleAddProduct: (data: ProductInterface) => void;
 }
 export const ProductCard = ({
   productName,
@@ -56,6 +51,7 @@ export const ProductCard = ({
           <CustomInput
             label={true}
             labelText="Dodaj nowy produkt"
+            labelVariant="p"
             placeholder="Nazwa produktu"
             name="product-name"
             value={productName}
@@ -67,6 +63,8 @@ export const ProductCard = ({
             optionCollection={productUnitCollection}
             isDisabled={isTypeDisabled}
             label={true}
+            htmlFor=""
+            labelVariant="p"
             labelText="Typ produktu"
             fnHandleSelectChange={(e) => handleProductType(e)}
           />
@@ -75,6 +73,8 @@ export const ProductCard = ({
           <Select
             optionCollection={unitCollection}
             label={true}
+            htmlFor=""
+            labelVariant="p"
             labelText="Jednostka produktu"
             fnHandleSelectChange={(e) =>
               setSelectedProductUnit(e.currentTarget.value)
@@ -85,6 +85,7 @@ export const ProductCard = ({
           <CustomInput
             label={true}
             labelText="Ilość"
+            labelVariant="p"
             placeholder="np. 10"
             name="product-count"
             value={productCount}
@@ -94,15 +95,16 @@ export const ProductCard = ({
 
         <div className={styles["button-container"]}>
           <Button
+            textVariant="p"
             type="primary"
             text={buttonText}
             fnHandleClick={() =>
-              handleAddProduct(
-                Math.random().toString(),
-                productName,
-                productCount.toString(),
-                selectedProductUnit
-              )
+              handleAddProduct({
+                id: Math.random().toString(),
+                productName: productName,
+                productCount: productCount.toString(),
+                productUnit: selectedProductUnit,
+              })
             }
           />
         </div>
