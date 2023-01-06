@@ -15,6 +15,7 @@ import { Label } from "./Form/Label/Label";
 import { Select } from "./Select/Select";
 import { Loading } from "./Loading/Loading";
 import { ProductCard } from "./Card/ProductCard/ProductCard";
+import { Dropdown } from "./Dropdown/Dropdown";
 
 export {
   Button,
@@ -34,4 +35,5 @@ export {
   Select,
   Loading,
   ProductCard,
+  Dropdown,
 };

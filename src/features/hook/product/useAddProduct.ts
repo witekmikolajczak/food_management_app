@@ -31,7 +31,7 @@ export function useAddProduct() {
   };
 
   function handleDeleteFromTable(productId: string) {
-    setProducts(products.filter((value) => value.id !== productId));
+    setProducts((prev) => [...prev.filter((item) => item.id !== productId)]);
   }
 
   function handleSendProduct() {

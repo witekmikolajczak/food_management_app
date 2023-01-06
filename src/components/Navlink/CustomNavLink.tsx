@@ -1,41 +1,39 @@
 import { NavLink, Link } from "react-router-dom";
 
 import styles from "./CustomNavLink.module.scss";
+import { Typography } from "../Typography/Typography";
+import { useState } from "react";
 
 interface NavLinkProps {
-  linksCollection: LinkInterface[];
+  path: string;
+  icon: JSX.Element;
+  text: string;
+
   isHidden: boolean;
   fnHandleClick: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
   className?: string;
 }
 
 export const CustomNavLink = ({
-  linksCollection,
+  path,
+  icon,
+  text,
   isHidden,
   fnHandleClick,
 }: NavLinkProps): JSX.Element => {
-  const renderLinks = linksCollection.map((link, index) => {
-    return (
-      <li
-        className={styles.wrapper}
-        key={index}
-        onClick={(event) => fnHandleClick(event)}
-        id={link.name}
+  return (
+    <li onClick={(event) => fnHandleClick(event)} className={styles.wrapper}>
+      <NavLink
+        to={`/${path}`}
+        className={({ isActive }) => (isActive ? styles.active : undefined)}
       >
-        <Link
-          to={`/${link.path}`}
-          // className={({ isActive }) => (isActive ? styles.active : undefined)}
-        >
-          <div className={`${isHidden && styles.content}`}>
-            <div className={styles["icon-container"]}>{link.icon}</div>
-
-            <div className={styles["text-container"]}>
-              {!isHidden ? link.name && <p>{link.name}</p> : ""}
-            </div>
+        <div className={`${isHidden && styles.content}`}>
+          <div className={styles["icon-container"]}>{icon}</div>
+          <div className={styles["text-container"]}>
+            {!isHidden ? text && <Typography variant="p" text={text} /> : ""}
           </div>
-        </Link>
-      </li>
-    );
-  });
-  return <>{renderLinks}</>;
+        </div>
+      </NavLink>
+    </li>
+  );
 };

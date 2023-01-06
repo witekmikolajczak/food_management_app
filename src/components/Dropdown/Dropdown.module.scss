@@ -1,0 +1,40 @@
+.wrapper {
+  list-style-type: none;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+  color: #3f6ad8;
+  cursor: pointer;
+  display: flex;
+
+  &:hover {
+    background-color: var(--background-secondary);
+    transition: 0.8s;
+  }
+}
+.icon-container {
+  display: flex;
+  justify-content: center;
+  width: 3rem;
+  svg {
+    margin: 0;
+  }
+}
+.subContainer {
+  width: 200px;
+}
+.hidden {
+  list-style-type: none;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+  color: #3f6ad8;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+
+  &:hover {
+    background-color: var(--background-secondary);
+    transition: 0.8s;
+  }
+}

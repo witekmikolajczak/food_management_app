@@ -7,10 +7,17 @@ global {
     value: string;
   }
 
-  interface LinkInterface {
+  interface SubLinkInterface {
+    id: string;
     path: string;
-    name?: string;
+    name: string;
     icon: JSX.Element;
+  }
+  interface LinkInterface {
+    mainText: string;
+    mainIcon?: JSX.Element;
+    subLinks?: SubLinkInterface[];
+    link?: SubLinkInterface;
   }
 
   interface CurrentProductInterface {
