@@ -3,19 +3,19 @@
 
   .table {
     width: 100%;
-    border: 1px solid var(--text-green);
+    border: 1px solid var(--background-secondary);
     border-spacing: 0;
     tr {
       border-color: inherit;
     }
     td {
-      border: 1px solid var(--text-green);
+      border: 1px solid var(--background-secondary);
       border-bottom: none;
       border-right: none;
       padding: 0.5rem;
     }
     th {
-      border: 1px solid var(--text-green);
+      border: 1px solid var(--background-secondary);
       border-bottom: none;
       border-right: none;
       padding: 0.5rem;

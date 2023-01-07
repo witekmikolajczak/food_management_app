@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AiFillEdit, AiOutlineDelete } from "react-icons/ai";
 import { useFetchProduct } from "./useFetchProduct";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import {  useAppSelector } from "../../redux/hook";
 import { useProductDeleteMutation } from "../../redux/api/product";
 export const useEditProduct = () => {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const stateProductCollection = useAppSelector((state) => state.product);
   const sessionToken = useAppSelector((state) => state.auth.sessionToken);
   const [
-    productDelete,
-    {
-      isError: isDeleteError,
-      isSuccess: isDeleteSuccess,
-      isLoading: isDeleteLoading,
-    },
+    productDelete
   ] = useProductDeleteMutation();
   const { fetchProductCollection, productIsError, productIsLoading } =
     useFetchProduct();

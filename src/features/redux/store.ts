@@ -6,7 +6,7 @@ import { productListenerMiddleware } from "./middleware/product";
 export function initStore() {
   return configureStore({
     reducer: createReducer(),
-    //@ts-expect-error
+    //@ts-expect-error - come react middleware problem
     middleware: (getDefaultMiddleware) => [
       ...getDefaultMiddleware(),
       authApi.middleware,

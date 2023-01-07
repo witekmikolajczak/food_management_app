@@ -1,8 +1,4 @@
-import React, { useState } from "react";
-import {
-  useRegisterMutation,
-  useLoginMutation,
-} from "../../features/redux/api/auth";
+import { useState } from "react";
 
 import { AiOutlineLogin, AiOutlineLogout } from "react-icons/ai";
 import { Login } from "./Login";

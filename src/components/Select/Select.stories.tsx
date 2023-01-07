@@ -2,7 +2,6 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { withRouter } from "storybook-addon-react-router-v6";
 
 import { Select } from "./Select";
-import { productUnitCollection } from "../../features/constant/productOptionCollection";
 
 export default {
   title: "Components/Select",

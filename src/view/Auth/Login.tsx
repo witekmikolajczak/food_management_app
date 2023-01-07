@@ -17,6 +17,9 @@ export const Login = () => {
       {loginInputCollection.map((input, index) => {
         return (
           <CustomInput
+            labelText=""
+            labelVariant="p"
+            inputType={input.inputType}
             key={index}
             fnHandleChange={(event) => handleValuesChange(event)}
             placeholder={input.placeholder}

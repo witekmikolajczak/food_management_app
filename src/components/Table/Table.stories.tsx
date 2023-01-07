@@ -1,7 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Table } from "./Table";
-import { LATEST_RECIPT } from "../../features/constant/latestRecipt";
-import { AiOutlineLaptop } from "react-icons/ai";
 
 export default {
   title: "Components/Table",

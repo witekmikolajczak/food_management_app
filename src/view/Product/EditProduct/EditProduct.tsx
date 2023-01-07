@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { IoFastFoodOutline } from 'react-icons/io5';
-import { Layout, Table } from '../../components'
-import { useEditProduct } from '../../features/hook/product/useEditProduct';
-import { useAppSelector } from '../../features/redux/hook';
+import { IoFastFoodOutline } from "react-icons/io5";
+import { Layout, Table } from "../../../components";
+import { useEditProduct } from "../../../features/hook/product/useEditProduct";
 
-
-import styles from './EditProduct.module.scss'
 
 const TABLE_HEADERS = {
   positionName: "Nr.",
@@ -17,15 +13,14 @@ const TABLE_HEADERS = {
 
 export const EditProduct = () => {
   const {
-    productIsError, 
+    productIsError,
     productIsLoading,
-    setProductCollection,
     productCollection,
-  } = useEditProduct()
-  
+  } = useEditProduct();
+
   return (
     <Layout>
-      <div>test
+      <div>
         <Table
           isError={productIsError}
           isLoading={productIsLoading}
@@ -33,15 +28,15 @@ export const EditProduct = () => {
           tBodyCollection={productCollection}
           text="Edytuj wybrane produkty"
           icon={<IoFastFoodOutline size={25} />}
-          fnHandleButtonClick={()=>console.log('test')}
+          fnHandleButtonClick={() => console.log("test")}
           showButton={false}
           buttonText="Wyślij"
           buttonType="primary"
         />
       </div>
-  </Layout>
+    </Layout>
     // <div className={styles.wrapper}>
-  
+
     // </div>
-  )
-}
+  );
+};

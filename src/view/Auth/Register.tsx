@@ -22,6 +22,9 @@ export const Register = () => {
           if (step == input.page)
             return (
               <CustomInput
+                labelText=""
+                labelVariant="p"
+                inputType={input.inputType}
                 key={index}
                 placeholder={input.placeholder}
                 name={input.name}

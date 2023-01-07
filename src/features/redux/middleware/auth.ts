@@ -5,7 +5,7 @@ import { loadAuthData } from "../reducer/auth";
 export const authListenerMiddleware = createListenerMiddleware();
 authListenerMiddleware.startListening({
   actionCreator: loadAuthData,
-  effect: async (action, listenerApi) => {
+  effect: async (action) => {
     const state = {
       ...action.payload,
       isAuthenticated: true,

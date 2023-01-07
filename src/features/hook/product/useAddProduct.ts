@@ -10,7 +10,6 @@ export function useAddProduct() {
       isError: createProductError,
       isLoading: createProductLoading,
       isSuccess: createProductSuccess,
-      data: createProductData,
     },
   ] = useCreateProductMutation();
   const sessionToken = useAppSelector((state) => state.auth.sessionToken);

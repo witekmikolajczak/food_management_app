@@ -5,6 +5,8 @@ global {
     placeholder: string;
     page?: number;
     value: string;
+    labelText:string
+    inputType:string
   }
 
   interface SubLinkInterface {
@@ -42,6 +44,15 @@ global {
     productCount: string;
     delete?: JSX.Element;
   }
+
+  interface ReciptInterface {
+    positionNumber?: string;
+    id?: string;
+    reciptUrl: string
+    reciptIngredients: string[];
+    delete?: JSX.Element;
+  }
+
   interface RecentlyViewedRecipt {
     id: string;
     name: string;
