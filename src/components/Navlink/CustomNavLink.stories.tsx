@@ -2,7 +2,6 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { CustomNavLink } from "./CustomNavLink";
 
 import { withRouter } from "storybook-addon-react-router-v6";
-import { SIDEBAR_LINKS_COLLECTION } from "../../features/constant/links";
 
 export default {
   title: "Components/NavLink",
@@ -15,7 +14,3 @@ const Template: ComponentStory<typeof CustomNavLink> = (args) => (
 );
 
 export const NavLink = Template.bind({});
-
-NavLink.args = {
-  linksCollection: SIDEBAR_LINKS_COLLECTION,
-};
