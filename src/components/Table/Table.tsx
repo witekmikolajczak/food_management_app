@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Card } from "../Card/Card";
 import { Button } from "../Button/Button";
 import styles from "./Table.module.scss";
@@ -54,9 +52,9 @@ export const Table = ({
 
   function handleTbodyCollection(): JSX.Element[] {
     const arrayTr: any[] = [];
-    tBodyCollection.map((value, mapIndex) => {
+    tBodyCollection.map((value) => {
       const arrayTd: JSX.Element[] = [];
-      Object.entries(value).map(([key, value]: any, index) => {
+      Object.entries(value).map(([key, value]: any) => {
         arrayTd.push(
           <td key={key}>
             <Typography variant="p" text={value} />

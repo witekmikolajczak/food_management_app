@@ -5,6 +5,8 @@ export const AUTH_OBJECT: AuthInterface[] = [
     placeholder: "Imię",
     page: 0,
     value: "",
+    labelText:"",
+    inputType:"text"
   },
   {
     id: "1",
@@ -12,6 +14,8 @@ export const AUTH_OBJECT: AuthInterface[] = [
     placeholder: "Nazwisko",
     page: 0,
     value: "",
+    labelText:"",
+    inputType:"text"
   },
   {
     id: "5",
@@ -19,6 +23,8 @@ export const AUTH_OBJECT: AuthInterface[] = [
     placeholder: "Login",
     page: 2,
     value: "",
+    labelText:"",
+    inputType:"text"
   },
   {
     id: "3",
@@ -26,6 +32,8 @@ export const AUTH_OBJECT: AuthInterface[] = [
     placeholder: "Hasło",
     page: 1,
     value: "",
+    labelText:"",
+    inputType:"password"
   },
   {
     id: "4",
@@ -33,6 +41,8 @@ export const AUTH_OBJECT: AuthInterface[] = [
     placeholder: "Powtórz Hasło",
     page: 1,
     value: "",
+    labelText:"",
+    inputType:"password"
   },
 
   {
@@ -41,5 +51,7 @@ export const AUTH_OBJECT: AuthInterface[] = [
     placeholder: "Email",
     page: 2,
     value: "",
+    labelText:"",
+    inputType:"text"
   },
 ];

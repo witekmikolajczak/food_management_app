@@ -5,7 +5,7 @@ import { loadActiveProduct } from "../reducer/product";
 export const productListenerMiddleware = createListenerMiddleware();
 productListenerMiddleware.startListening({
   actionCreator: loadActiveProduct,
-  effect: async (action, listenerApi) => {
+  effect: async (action) => {
     localStorage.setItem("activeProduct", JSON.stringify(action.payload[0]));
   },
 });

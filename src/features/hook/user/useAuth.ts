@@ -5,7 +5,6 @@ import { AUTH_OBJECT } from "../../constant/auth";
 import { useNavigate } from "react-router-dom";
 
 //redux
-import { useAppSelector } from "../../redux/hook";
 import { useAppDispatch } from "../../redux/hook";
 import { loadAuthData } from "../../redux/reducer/auth";
 import { changeIsLoadingStatus } from "../../redux/reducer/loading";
@@ -15,7 +14,6 @@ export const useAuth = () => {
   const dispatch = useAppDispatch();
   const [values, setValues] = useState<Array<AuthInterface>>(AUTH_OBJECT);
   const [step, setStep] = useState<number>(0);
-  const state = useAppSelector((state) => state.auth);
 
   const [
     login,
@@ -23,7 +21,6 @@ export const useAuth = () => {
       data: loginResult,
       isError: loginIsError,
       error: loginError,
-      isLoading: loginIsLoading,
       isSuccess: loginSuccess,
     },
   ] = useLoginMutation();
@@ -32,7 +29,6 @@ export const useAuth = () => {
     {
       data: registerResult,
       isError: registerError,
-      isLoading: registerLoading,
       isSuccess: registerSuccess,
     },
   ] = useRegisterMutation();

@@ -2,15 +2,7 @@ import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { AiOutlineLaptop } from "react-icons/ai";
 
-import {
-  Counter,
-  Product,
-  Card,
-  Layout,
-  Typography,
-  Table,
-  Loading,
-} from "../../components";
+import { Counter, Card, Layout, Table } from "../../components";
 
 import { useFetchProduct } from "../../features/hook/product/useFetchProduct";
 
@@ -19,14 +11,11 @@ import {
   LATEST_RECIPT,
   LATEST_RECIPT_TABLE_HEADERS,
 } from "../../features/constant/latestRecipt";
-import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../features/redux/hook";
-import { changeIsLoadingStatus } from "../../features/redux/reducer/loading";
+import { useAppSelector } from "../../features/redux/hook";
 
 export const Dashboard = () => {
-  const dispatch = useAppDispatch();
   const productCollection = useAppSelector((state) => state.product);
-  const { productData, productIsError, productIsLoading, productIsSuccess } =
+  const { productIsError, productIsLoading, productIsSuccess } =
     useFetchProduct();
 
   function renderProductCollection() {
@@ -106,7 +95,7 @@ export const Dashboard = () => {
               tBodyCollection={LATEST_RECIPT}
               text="Ostatnio przeglądane przepisy"
               icon={<AiOutlineLaptop size={25} />}
-              fnHandleButtonClick={() => {}}
+              fnHandleButtonClick={() => console.log('clicked')}
               // fnHandleRecordClick={(value)=>console.log(value)}
             />
           </div>

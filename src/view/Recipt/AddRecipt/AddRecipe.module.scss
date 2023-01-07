@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  .inputWrapper {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    button {
+      margin-top: 2rem;
+    }
+  }
+
+  .tableWrapper {
+    width: 100%;
+    margin: 5rem;
+  }
+}

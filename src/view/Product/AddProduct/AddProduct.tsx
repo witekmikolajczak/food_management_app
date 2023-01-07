@@ -2,10 +2,10 @@ import React from "react";
 import { IoFastFoodOutline } from "react-icons/io5";
 import { AiOutlineDelete } from "react-icons/ai";
 
-import { productUnitCollection } from "../../features/constant/productOptionCollection";
-import { Layout, Table, ProductCard } from "../../components";
+import { productUnitCollection } from "../../../features/constant/productOptionCollection";
+import { Layout, Table, ProductCard } from "../../../components";
 import styles from "./AddProduct.module.scss";
-import { useAddProduct } from "../../features/hook/product/useAddProduct";
+import { useAddProduct } from "../../../features/hook/product/useAddProduct";
 
 // ----------render table---------
 const TABLE_HEADERS = {

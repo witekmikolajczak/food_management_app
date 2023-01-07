@@ -6,16 +6,13 @@ import { loadAuthData } from "../../features/redux/reducer/auth";
 
 import { CustomNavLink } from "../Navlink/CustomNavLink";
 import { Dropdown } from "../Dropdown/Dropdown";
-import { Navigate, useNavigate } from "react-router-dom";
 
 import styles from "./Sidebar.module.scss";
-import { Typography } from "../Typography/Typography";
 
 interface SidebarInterface {
   linksCollection: LinkInterface[];
 }
 export const Sidebar = ({ linksCollection }: SidebarInterface): JSX.Element => {
-  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(true);
   const sessionToken = useAppSelector((state) => state.auth.sessionToken);
   const dispatch = useAppDispatch();
@@ -79,6 +76,7 @@ export const Sidebar = ({ linksCollection }: SidebarInterface): JSX.Element => {
           if (link.subLinks && link.mainIcon && link.subLinks.length > 1) {
             return (
               <Dropdown
+                key={i}
                 isHidden={!isOpen}
                 icon={link.mainIcon}
                 text={link.mainText}

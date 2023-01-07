@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   .input {
     height: 2rem;
@@ -11,7 +12,7 @@
     color: var(--text-white);
     &:focus {
       outline: none;
-      border-bottom: 1px solid #3f6ad8;
+      border-bottom: 1px solid var(--text-green);
     }
   }
 }

@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
-import { productUnitCollection } from "../../features/constant/productOptionCollection";
-import { Layout, Sidebar, ProductCard } from "../../components";
-import { useAddProduct } from "../../features/hook/product/useAddProduct";
-import { useAppSelector } from "../../features/redux/hook";
-import { useEditProduct } from "../../features/hook/product/useEditProduct";
-import { useUpdateProductMutation } from "../../features/redux/api/product";
-import { useEditDetailProduct } from "../../features/hook/product/useEditDetailProduct";
+import { productUnitCollection } from "../../../features/constant/productOptionCollection";
+import { Layout, ProductCard } from "../../../components";
+import { useAddProduct } from "../../../features/hook/product/useAddProduct";
+
+
+import { useUpdateProductMutation } from "../../../features/redux/api/product";
+import { useEditDetailProduct } from "../../../features/hook/product/useEditDetailProduct";
 
 export const EditDetailProduct = () => {
   const { unitCollection, selectedProductUnit, handleProductType } =
@@ -13,12 +12,6 @@ export const EditDetailProduct = () => {
 
   const [
     updateProduct,
-    {
-      data: productUpdateData,
-      isError: productUpdateIsError,
-      isLoading: productUpdateIsLoading,
-      isSuccess: productUpdateIsSuccess,
-    },
   ] = useUpdateProductMutation();
   const {
     currentProduct,

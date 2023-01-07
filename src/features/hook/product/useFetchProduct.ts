@@ -4,8 +4,6 @@ import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { loadProductCollection } from "../../redux/reducer/product";
 export const useFetchProduct = () => {
   const sessionToken = useAppSelector((state) => state.auth.sessionToken);
-  const productArray = useAppSelector((state) => state.product);
-
   const dispatch = useAppDispatch();
   const [
     productCollection,

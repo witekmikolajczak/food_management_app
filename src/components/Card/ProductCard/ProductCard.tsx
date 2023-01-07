@@ -49,6 +49,7 @@ export const ProductCard = ({
       <div className={styles["card-content"]}>
         <div className={styles["product-name"]}>
           <CustomInput
+            inputType="text"
             label={true}
             labelText="Dodaj nowy produkt"
             labelVariant="p"
@@ -83,6 +84,7 @@ export const ProductCard = ({
         </div>
         <div className={styles["product-count"]}>
           <CustomInput
+            inputType="text"
             label={true}
             labelText="Ilość"
             labelVariant="p"
